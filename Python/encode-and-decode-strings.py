@@ -9,10 +9,7 @@ class Codec(object):
         :type strs: List[str]
         :rtype: str
         """
-        encoded_str = ""
-        for s in strs:
-            encoded_str += "%0*x" % (8, len(s)) + s
-        return encoded_str
+        return "".join("%0*x" % (8, len(s)) + s for s in strs)
 
 
     def decode(self, s):

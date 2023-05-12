@@ -10,9 +10,7 @@ class Solution(object):
         """
         n = len(nums)
         accu = [0]
-        for num in nums:
-            accu.append(accu[-1]+num)
-
+        accu.extend(accu[-1]+num for num in nums)
         left_pos = [0] * n
         total = accu[k]-accu[0]
         for i in xrange(k, n):
@@ -35,8 +33,8 @@ class Solution(object):
         for i in xrange(k, n-2*k+1):
             left, right = left_pos[i-1], right_pos[i+k]
             total = (accu[i+k]-accu[i]) + \
-                    (accu[left+k]-accu[left]) + \
-                    (accu[right+k]-accu[right])
+                        (accu[left+k]-accu[left]) + \
+                        (accu[right+k]-accu[right])
             if total > max_sum:
                 max_sum = total
                 result = [left, i, right]

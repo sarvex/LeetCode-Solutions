@@ -25,7 +25,4 @@ class Solution(object):
         :rtype: List[int]
         """
         union_find = UnionFind(len(edges)+1)
-        for edge in edges:
-            if not union_find.union_set(*edge):
-                return edge
-        return []
+        return next((edge for edge in edges if not union_find.union_set(*edge)), [])

@@ -18,5 +18,11 @@ class Solution(object):
         A.sort()
         for t, u, w in A:
             lookup[u].append(w)
-        count = sum([collections.Counter(set(itertools.combinations(lookup[u], 3))) for u in lookup], collections.Counter())
+        count = sum(
+            (
+                collections.Counter(set(itertools.combinations(lookup[u], 3)))
+                for u in lookup
+            ),
+            collections.Counter(),
+        )
         return list(min(count, key=lambda x: (-count[x], x)))

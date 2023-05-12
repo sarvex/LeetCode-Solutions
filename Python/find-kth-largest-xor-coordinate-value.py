@@ -36,17 +36,14 @@ class Solution(object):
                     right = pivot_left-1
                 else:  # pivot_right < n.
                     left = pivot_right+1
-        
-        
+
+
         vals = []
         for r in xrange(len(matrix)):
             curr = 0
             for c in xrange(len(matrix[0])):
                 curr = curr^matrix[r][c]
-                if r == 0:
-                    matrix[r][c] = curr
-                else:
-                    matrix[r][c] = curr^matrix[r-1][c]
+                matrix[r][c] = curr if r == 0 else curr^matrix[r-1][c]
                 vals.append(matrix[r][c])
         nth_element(vals, k-1, compare=lambda a, b: a > b)
         return vals[k-1]

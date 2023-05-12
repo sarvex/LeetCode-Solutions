@@ -19,7 +19,7 @@ class Trie(object):
     def insert(self, word):
         cur = self.root
         for c in word:
-            if not c in cur.leaves:
+            if c not in cur.leaves:
                 cur.leaves[c] = TrieNode()
             cur = cur.leaves[c]
         cur.is_string = True
@@ -28,10 +28,7 @@ class Trie(object):
     # @return {boolean}
     # Returns if the word is in the trie.
     def search(self, word):
-        node = self.childSearch(word)
-        if node:
-            return node.is_string
-        return False
+        return node.is_string if (node := self.childSearch(word)) else False
 
     # @param {string} prefix
     # @return {boolean}

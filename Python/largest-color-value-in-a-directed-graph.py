@@ -13,10 +13,7 @@ class Solution(object):
         for u, v in edges:
             adj[u].append(v)
             in_degree[v] += 1
-        q = []
-        for u in xrange(len(colors)):
-            if not in_degree[u]:
-                q.append(u)
+        q = [u for u in xrange(len(colors)) if not in_degree[u]]
         dp = [[0]*26 for _ in xrange(len(colors))]
         result, cnt = -1, 0
         while q:

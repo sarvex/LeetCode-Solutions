@@ -11,9 +11,8 @@ class Solution(object):
         lookup = set(s)
         result = ""
         for c in s:
-            if c.isupper() and lower(c) in s:
-                if c > result:
-                    result = c
+            if c.isupper() and lower(c) in s and c > result:
+                result = c
         return result
 
 

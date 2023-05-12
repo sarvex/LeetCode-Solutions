@@ -128,9 +128,7 @@ class SegmentTree(object):  # 0-based index
         return result
     
     def __str__(self):
-        showList = []
-        for i in xrange(self.N):
-            showList.append(self.query(i, i))
+        showList = [self.query(i, i) for i in xrange(self.N)]
         return ",".join(map(str, showList))
 
 
@@ -149,7 +147,7 @@ class Solution3(object):
         for num in nums:
             segment_tree.update(lookup[num], lookup[num],
                                 segment_tree.query(0, lookup[num]-1)+1 if lookup[num] >= 1 else 1)
-        return segment_tree.query(0, len(lookup)-1) if len(lookup) >= 1 else 0
+        return segment_tree.query(0, len(lookup)-1) if lookup else 0
 
 
 # Time:  O(n^2)
@@ -167,5 +165,5 @@ class Solution4(object):
             for j in xrange(i):
                 if nums[j] < nums[i]:
                     dp[i] = max(dp[i], dp[j] + 1)
-        return max(dp) if dp else 0
+        return max(dp, default=0)
 

@@ -47,7 +47,7 @@ class Solution2(object):
             min_diff, prev = INF, -1
             for num in xrange(len(idxs)):
                 i = bisect.bisect_left(idxs[num], l)
-                if not (i < len(idxs[num]) and idxs[num][i] <= r):
+                if i >= len(idxs[num]) or idxs[num][i] > r:
                     continue
                 if prev != -1:
                     min_diff = min(min_diff, num-prev)

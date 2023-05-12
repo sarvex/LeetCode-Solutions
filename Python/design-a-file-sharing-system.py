@@ -49,11 +49,7 @@ class FileSharing(object):
         :type chunkID: int
         :rtype: List[int]
         """
-        result = []
-        for u, chunks in enumerate(self.__users, 1):
-            if chunkID not in chunks:
-                continue
-            result.append(u)
+        result = [u for u, chunks in enumerate(self.__users, 1) if chunkID in chunks]
         if not result:
             return
         self.__users[userID-1].add(chunkID)

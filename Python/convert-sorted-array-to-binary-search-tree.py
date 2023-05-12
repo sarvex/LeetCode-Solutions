@@ -35,10 +35,7 @@ class Solution(object):
         #     x *= 2
         x = 1 << (n.bit_length() - 1)  # use the left bit shift, same as multiplying x by 2**n-1
 
-        if x // 2 - 1 <= (n - x):
-            return x - 1  # case 1: the left subtree of the root is perfect and the right subtree has less nodes
-        else:
-            return n - x // 2  # case 2 == n - (x//2 - 1) - 1 : the left subtree of the root
+        return x - 1 if x // 2 - 1 <= (n - x) else n - x // 2
                                # has more nodes and the right subtree is perfect.
 
 # Time:  O(n)

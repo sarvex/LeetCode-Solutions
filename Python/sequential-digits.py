@@ -19,6 +19,6 @@ class Solution(object):
                 continue
             if low <= num:
                 result.append(num)
-            if num%10+1 < 10:
+            if num % 10 < 9:
                 q.append(num*10+num%10+1)
         return result

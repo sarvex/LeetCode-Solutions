@@ -116,8 +116,7 @@ class Solution2(object):
             lookup[node].left = lookup[node.left]
             lookup[node].right = lookup[node.right]
             lookup[node].random = lookup[node.random]
-            stk.append(node.right)
-            stk.append(node.left)
+            stk.extend((node.right, node.left))
         return lookup[root]
 
 

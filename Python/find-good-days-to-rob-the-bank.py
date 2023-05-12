@@ -9,8 +9,10 @@ class Solution(object):
         :rtype: List[int]
         """
         right = [0]
-        for i in reversed(xrange(1, len(security))):
-            right.append(right[-1]+1 if security[i] >= security[i-1] else 0)
+        right.extend(
+            right[-1] + 1 if security[i] >= security[i - 1] else 0
+            for i in reversed(xrange(1, len(security)))
+        )
         right.reverse()
         result = []
         left = 0

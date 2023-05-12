@@ -63,13 +63,16 @@ class Solution2(object):
         """
         edges = []
         for u in xrange(len(points)):
-            for v in xrange(u+1, len(points)):
-                edges.append((u, v, abs(points[v][0]-points[u][0]) + abs(points[v][1]-points[u][1])))
+            edges.extend(
+                (
+                    u,
+                    v,
+                    abs(points[v][0] - points[u][0])
+                    + abs(points[v][1] - points[u][1]),
+                )
+                for v in xrange(u + 1, len(points))
+            )
         edges.sort(key=lambda x: x[2])
-        result = 0
         union_find = UnionFind(len(points))
-        for u, v, val in edges:
-            if union_find.union_set(u, v):
-                result += val
-        return result
+        return sum(val for u, v, val in edges if union_find.union_set(u, v))
 

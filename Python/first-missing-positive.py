@@ -12,8 +12,7 @@ class Solution(object):
             else:
                 i += 1
 
-        for i, integer in enumerate(A):
-            if integer != i + 1:
-                return i + 1
-        return len(A) + 1
+        return next(
+            (i + 1 for i, integer in enumerate(A) if integer != i + 1), len(A) + 1
+        )
 

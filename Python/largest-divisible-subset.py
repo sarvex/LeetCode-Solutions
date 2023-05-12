@@ -16,10 +16,9 @@ class Solution(object):
         largest_idx = 0
         for i in xrange(len(nums)):
             for j in xrange(i):
-                if nums[i] % nums[j] == 0:
-                    if dp[i] < dp[j] + 1:
-                        dp[i] = dp[j] + 1
-                        prev[i] = j
+                if nums[i] % nums[j] == 0 and dp[i] < dp[j] + 1:
+                    dp[i] = dp[j] + 1
+                    prev[i] = j
             if dp[largest_idx] < dp[i]:
                 largest_idx = i
 

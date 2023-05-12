@@ -8,10 +8,7 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
-        if not needle:
-            return 0
-
-        return self.KMP(haystack, needle)
+        return 0 if not needle else self.KMP(haystack, needle)
 
     def KMP(self, text, pattern):
         prefix = self.getPrefix(pattern)
@@ -46,9 +43,13 @@ class Solution2(object):
         :type needle: str
         :rtype: int
         """
-        for i in xrange(len(haystack) - len(needle) + 1):
-            if haystack[i : i + len(needle)] == needle:
-                return i
-        return -1
+        return next(
+            (
+                i
+                for i in xrange(len(haystack) - len(needle) + 1)
+                if haystack[i : i + len(needle)] == needle
+            ),
+            -1,
+        )
 
 

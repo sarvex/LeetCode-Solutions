@@ -44,7 +44,7 @@ class Codec(object):
                     return
                 yield source[start:idx]
                 start = idx + sepsize
-                
+
         def dfs(vals):
             val = next(vals)
             if val == "#":
@@ -56,10 +56,7 @@ class Codec(object):
                 child = dfs(vals)
             return root
 
-        if not data:
-            return None
-    
-        return dfs(iter(isplit(data, ' ')))
+        return None if not data else dfs(iter(isplit(data, ' ')))
         
 
 

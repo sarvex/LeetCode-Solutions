@@ -19,8 +19,23 @@ class Solution(object):
                 for k in xrange(n):
                     if houses[i] and houses[i]-1 != k:
                         continue
-                    same = dp[(i-1)%2][j][k] if i-1 >= 0 else 0
-                    diff = (min([dp[(i-1)%2][j-1][nk] for nk in xrange(n) if nk != k] or [float("inf")]) if j-1 >= 0 else float("inf")) if i-1 >= 0 else 0
+                    same = dp[(i-1)%2][j][k] if i >= 1 else 0
+                    diff = (
+                        (
+                            min(
+                                [
+                                    dp[(i - 1) % 2][j - 1][nk]
+                                    for nk in xrange(n)
+                                    if nk != k
+                                ]
+                                or [float("inf")]
+                            )
+                            if j >= 1
+                            else float("inf")
+                        )
+                        if i >= 1
+                        else 0
+                    )
                     paint = cost[i][k] if not houses[i] else 0
                     dp[i%2][j][k] = min(same, diff)+paint
         result = min(dp[(m-1)%2][-1])

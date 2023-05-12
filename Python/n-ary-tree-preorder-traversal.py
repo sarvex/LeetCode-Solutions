@@ -19,9 +19,7 @@ class Solution(object):
         while stack:
             node = stack.pop()
             result.append(node.val)
-            for child in reversed(node.children):
-                if child:
-                    stack.append(child)
+            stack.extend(child for child in reversed(node.children) if child)
         return result
 
 

@@ -27,7 +27,7 @@ class Solution(object):
                 if c == b:
                     continue
                 for _, d in top3[b]:
-                    if d == a or d == c:
+                    if d in [a, c]:
                         continue
                     result = max(result, sum(scores[x] for x in (a, b, c, d)))
         return result

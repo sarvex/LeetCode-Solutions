@@ -16,7 +16,7 @@ class ZeroEvenOdd(object):
         :type printNumber: method
         :rtype: void
         """
-        for i in xrange(self.__n):
+        for _ in xrange(self.__n):
             with self.__cv:
                 while self.__curr % 2 != 0:
                     self.__cv.wait()

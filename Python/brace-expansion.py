@@ -6,7 +6,7 @@ import itertools
 
 
 class Solution(object):
-    def expand(self, S):  # nested is fine
+    def expand(self, S):    # nested is fine
         """
         :type S: str
         :rtype: List[str]
@@ -23,8 +23,7 @@ class Solution(object):
                 for option in generate_words(expr, i):
                     option_set.add(option)
             i[0] += 1  # }
-            option = list(option_set)
-            option.sort()
+            option = sorted(option_set)
             return option
 
         def generate_words(expr, i):
@@ -43,7 +42,7 @@ class Solution(object):
 
 
 class Solution2(object):
-    def expand(self, S):  # nested is fine
+    def expand(self, S):    # nested is fine
         """
         :type S: str
         :rtype: List[str]
@@ -70,8 +69,7 @@ class Solution2(object):
                 for option in generate_words(expr, i):
                     option_set.add(option)
             i[0] += 1  # }
-            option = list(option_set)
-            option.sort()
+            option = sorted(option_set)
             return option
 
         def generate_words(expr, i):

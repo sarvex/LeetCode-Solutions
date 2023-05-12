@@ -52,7 +52,7 @@ class TodoList(object):
         :type taskId: int
         :rtype: None
         """
-        if not (taskId-1 < len(self.__tasks) and userId in self.__user_task_ids):
+        if taskId - 1 >= len(self.__tasks) or userId not in self.__user_task_ids:
             return
         self.__user_task_ids[userId].discard((self.__tasks[taskId-1][0], taskId))
 
@@ -112,7 +112,7 @@ class TodoList2(object):
         :type taskId: int
         :rtype: None
         """
-        if not (taskId-1 < len(self.__tasks) and userId in self.__user_task_ids):
+        if taskId - 1 >= len(self.__tasks) or userId not in self.__user_task_ids:
             return
         self.__user_task_ids[userId].discard((self.__tasks[taskId-1][0], taskId))
         for tag in self.__tasks[taskId-1][-1]:

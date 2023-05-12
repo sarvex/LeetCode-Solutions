@@ -18,8 +18,7 @@ class Solution(object):
             cnt[e+1] -= 1
         events = sorted(cnt.iterkeys())
         prefix = [0]
-        for x in events:
-            prefix.append(prefix[-1]+cnt[x])
+        prefix.extend(prefix[-1]+cnt[x] for x in events)
         return [prefix[bisect.bisect_right(events, t)] for t in persons]
 
 

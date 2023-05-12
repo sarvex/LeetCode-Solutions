@@ -54,7 +54,6 @@ class Solution2(object):
                 result.append(root.val)
             else:
                 stack.append((root.right, False))
-                stack.append((root, True))
-                stack.append((root.left, False))
+                stack.extend(((root, True), (root.left, False)))
         return result
 

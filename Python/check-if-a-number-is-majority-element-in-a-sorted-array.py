@@ -14,9 +14,8 @@ class Solution(object):
         if len(nums) % 2:
             if nums[len(nums)//2] != target:
                 return False
-        else:
-            if not (nums[len(nums)//2-1] == nums[len(nums)//2] == target):
-                return False
+        elif not (nums[len(nums)//2-1] == nums[len(nums)//2] == target):
+            return False
 
         left = bisect.bisect_left(nums, target)
         right= bisect.bisect_right(nums, target)

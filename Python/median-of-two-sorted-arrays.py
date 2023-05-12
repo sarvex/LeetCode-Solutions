@@ -29,7 +29,7 @@ class Solution(object):
             else:
                 left = mid + 1
 
-        Ai_minus_1 = A[left - 1] if left - 1 >= 0 else float("-inf")
+        Ai_minus_1 = A[left - 1] if left >= 1 else float("-inf")
         Bj = B[k - 1 - left] if k - 1 - left >= 0 else float("-inf")
 
         return max(Ai_minus_1, Bj)
@@ -88,17 +88,16 @@ class Solution_3(object):
         lenn = lenA + lenB
 
         indexA,indexB,indexC = 0,0,0
-        C = [False for i in xrange(lenn)]
+        C = [False for _ in xrange(lenn)]
         while indexA < lenA and indexB < lenB:
             if A[indexA] < B[indexB]:
                 C[indexC] = A[indexA]
-                indexC += 1
                 indexA += 1
             else:
                 C[indexC] = B[indexB]
-                indexC += 1
                 indexB += 1
 
+            indexC += 1
         while indexA < lenA:
             C[indexC] = A[indexA]
             indexC += 1
@@ -112,8 +111,5 @@ class Solution_3(object):
         indexM1 = (lenn - 1) / 2
         indexM2 = lenn / 2
 
-        if (lenn % 2 == 0):
-            return (C[indexM1] + C[indexM2]) / 2.0
-        else:
-            return C[indexM2] / 1.0
+        return (C[indexM1] + C[indexM2]) / 2.0 if (lenn % 2 == 0) else C[indexM2] / 1.0
 

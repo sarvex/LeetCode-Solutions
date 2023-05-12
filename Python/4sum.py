@@ -51,11 +51,7 @@ class Solution2(object):
         nums, result, lookup = sorted(nums), [], collections.defaultdict(list)
         for i in xrange(0, len(nums) - 1):
             for j in xrange(i + 1, len(nums)):
-                is_duplicated = False
-                for [x, y] in lookup[nums[i] + nums[j]]:
-                    if nums[x] == nums[i]:
-                        is_duplicated = True
-                        break
+                is_duplicated = any(nums[x] == nums[i] for [x, y] in lookup[nums[i] + nums[j]])
                 if not is_duplicated:
                     lookup[nums[i] + nums[j]].append([i, j])
         ans = {}

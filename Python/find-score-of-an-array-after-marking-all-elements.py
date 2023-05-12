@@ -16,7 +16,7 @@ class Solution(object):
             if lookup[i]:
                 continue
             lookup[i] = True
-            if i-1 >= 0:
+            if i >= 1:
                 lookup[i-1] = True
             if i+1 < len(lookup):
                 lookup[i+1] = True

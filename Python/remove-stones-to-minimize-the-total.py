@@ -14,6 +14,6 @@ class Solution(object):
         for i, x in enumerate(piles):
             piles[i] = -x
         heapq.heapify(piles)
-        for i in xrange(k):
+        for _ in xrange(k):
             heapq.heappush(piles, heapq.heappop(piles)//2)
         return -sum(piles)

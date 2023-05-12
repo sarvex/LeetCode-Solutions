@@ -24,6 +24,6 @@ class Solution(object):
         j = 0
         for i in xrange(cnt):
             l = limit-(3+len(str(i+1))+len(str(cnt)))
-            result.append("%s<%s/%s>"%(message[j:j+l], i+1, cnt))
+            result.append(f"{message[j:j + l]}<{i + 1}/{cnt}>")
             j += l
         return result

@@ -89,7 +89,7 @@ class Solution3(object):
             total = word_lens[i-1]
             for j in reversed(xrange(i)):
                 dp[i] = min(dp[i], dp[j] + (k-total)**2)
-                if j-1 < 0:
+                if j < 1:
                     continue
                 total += (word_lens[j-1]+1)
                 if total > k:

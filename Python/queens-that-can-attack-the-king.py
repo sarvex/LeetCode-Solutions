@@ -11,7 +11,7 @@ class Solution(object):
         dirctions = [(-1, 0), (0, 1), (1, 0), (0, -1),
                      (-1, 1), (1, 1), (1, -1), (-1, -1)]
         result = []
-        lookup = {(i, j) for i, j in queens}
+        lookup = set(queens)
         for dx, dy in dirctions:
             for i in xrange(1, 8):
                 x, y = king[0] + dx*i, king[1] + dy*i

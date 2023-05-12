@@ -14,7 +14,7 @@ class Solution(object):
         result, lookup = [], set()
         for name in names:
             while True:
-                name_with_suffix = "{}({})".format(name, count[name]) if count[name] else name
+                name_with_suffix = f"{name}({count[name]})" if count[name] else name
                 count[name] += 1
                 if name_with_suffix not in lookup:
                     break

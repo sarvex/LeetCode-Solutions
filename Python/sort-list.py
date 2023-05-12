@@ -8,13 +8,13 @@ class ListNode(object):
 
     def __repr__(self):
         if self:
-            return "{} -> {}".format(self.val, repr(self.next))
+            return f"{self.val} -> {repr(self.next)}"
 
 class Solution(object):
     # @param head, a ListNode
     # @return a ListNode
     def sortList(self, head):
-        if head == None or head.next == None:
+        if head is None or head.next is None:
             return head
 
         fast, slow, prev = head, head, None

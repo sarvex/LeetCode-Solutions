@@ -26,7 +26,7 @@ class Solution2(object):
         :rtype: List[int]
         """
         result, d = [1, num+1], 1
-        while d*d <= num+2:
+        while d**2 <= num + 2:
             if (num+2) % d == 0:
                 result = [d, (num+2)//d]
             if (num+1) % d == 0:

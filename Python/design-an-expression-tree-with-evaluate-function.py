@@ -35,9 +35,13 @@ class NodeIter(Node):
                     ret[0] = int(node.val)
                     continue
                 ret1, ret2 = [0], [0]
-                stk.append((2, (node, ret1, ret2, ret)))
-                stk.append((1, (node.right, ret2)))
-                stk.append((1, (node.left, ret1)))
+                stk.extend(
+                    (
+                        (2, (node, ret1, ret2, ret)),
+                        (1, (node.right, ret2)),
+                        (1, (node.left, ret1)),
+                    )
+                )
             elif step == 2:
                 node, ret1, ret2, ret = args
                 ret[0] = NodeIter.ops[node.val](ret1[0], ret2[0])

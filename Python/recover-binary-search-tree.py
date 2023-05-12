@@ -8,29 +8,24 @@ class TreeNode(object):
         self.right = None
 
     def __repr__(self):
-        if self:
-            serial = []
-            queue = [self]
-
-            while queue:
-                cur = queue[0]
-
-                if cur:
-                    serial.append(cur.val)
-                    queue.append(cur.left)
-                    queue.append(cur.right)
-                else:
-                    serial.append("#")
-
-                queue = queue[1:]
-
-            while serial[-1] == "#":
-                serial.pop()
-
-            return repr(serial)
-
-        else:
+        if not self:
             return None
+        serial = []
+        queue = [self]
+
+        while queue:
+            if cur := queue[0]:
+                serial.append(cur.val)
+                queue.extend((cur.left, cur.right))
+            else:
+                serial.append("#")
+
+            queue = queue[1:]
+
+        while serial[-1] == "#":
+            serial.pop()
+
+        return repr(serial)
 
 class Solution(object):
     # @param root, a tree node

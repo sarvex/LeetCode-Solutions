@@ -120,7 +120,7 @@ class Solution_Wrong_Greedy_SortedList(object):
             freq_to_nodes = collections.defaultdict(collections.OrderedDict)
             for x in ordered_set:
                 freq_to_nodes[count[x]][x] = count[x]
-            stks = [[] for _ in xrange(k)] 
+            stks = [[] for _ in xrange(k)]
             curr = 0
             while ordered_set:  # the while loop runs O(k) times
                 if len(stks)-curr in freq_to_nodes:  # fill the deterministic elements into the remaining subsets
@@ -150,7 +150,7 @@ class Solution_Wrong_Greedy_SortedList(object):
                         break
                 for x in to_remove:
                     ordered_set.remove(x)  # total time = O(nlogn)
-            return sum([max(stk)-min(stk) for stk in stks])
+            return sum(max(stk)-min(stk) for stk in stks)
 
         return min(greedy(nums, k, False), greedy(nums, k, True))  # two possible minimas
 
@@ -226,16 +226,13 @@ class SkipList(object):
     
     def __lower_bound(self, val, prevs):
         if prevs:
-            candidate = prevs[0].nexts[0]
-            if candidate:
+            if candidate := prevs[0].nexts[0]:
                 return candidate
         return None
 
     def __find(self, val, prevs):
         candidate = self.__lower_bound(val, prevs)
-        if candidate and candidate.val == val:
-            return candidate
-        return None
+        return candidate if candidate and candidate.val == val else None
 
     def __find_prev_nodes(self, val):
         prevs = [None]*len(self.__head.nexts)
@@ -294,7 +291,7 @@ class Solution_Wrong_Greedy_SkipList(object):
             for x in sorted(count.keys(), reverse=is_reversed):
                 ordered_set.add(x)
                 freq_to_nodes[count[x]][x] = count[x]
-            stks = [[] for _ in xrange(k)] 
+            stks = [[] for _ in xrange(k)]
             curr = 0
             while ordered_set:  # the while loop runs O(k) times
                 if len(stks)-curr in freq_to_nodes:  # fill the deterministic elements into the remaining subsets
@@ -323,7 +320,7 @@ class Solution_Wrong_Greedy_SkipList(object):
                     if len(stks[curr]) == len(nums)//k:
                         curr += 1
                         break
-            return sum([max(stk)-min(stk) for stk in stks])
+            return sum(max(stk)-min(stk) for stk in stks)
 
         return min(greedy(nums, k, False), greedy(nums, k, True))  # two possible minimas
 
@@ -348,7 +345,7 @@ class Solution_Wrong_Greedy(object):
             if max(count.itervalues()) > k:
                 return -1
             sorted_keys = sorted(count.keys(), reverse=is_reversed)
-            stks = [[] for _ in xrange(k)] 
+            stks = [[] for _ in xrange(k)]
             curr, remain = 0, len(nums)
             while remain:  # the while loop runs O(k) times, and the inner loops runs O(n) times
                 for x in sorted_keys:  # fill the deterministic elements into the remaining subsets
@@ -369,7 +366,7 @@ class Solution_Wrong_Greedy(object):
                     if len(stks[curr]) == len(nums)//k:
                         curr += 1
                         break
-            return sum([max(stk)-min(stk) for stk in stks])
+            return sum(max(stk)-min(stk) for stk in stks)
 
         return min(greedy(nums, k, False), greedy(nums, k, True))  # two possible minimas
 

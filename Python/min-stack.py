@@ -26,10 +26,7 @@ class MinStack(object):
     # @return an integer
     def top(self):
         x = self.stack[-1]
-        if x > 0:
-            return x + self.min
-        else:
-            return self.min
+        return x + self.min if x > 0 else self.min
 
     # @return an integer
     def getMin(self):

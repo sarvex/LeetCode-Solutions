@@ -20,6 +20,6 @@ class Solution(object):
                 for j in reversed(xrange(maxCoupons+1)):
                     if i-p >= 0:
                         dp[i][j] = max(dp[i][j], t+dp[i-p][j])
-                    if j-1 >= 0:
+                    if j >= 1:
                         dp[i][j] = max(dp[i][j], t+dp[i-p//2][j-1])
         return dp[maxAmount][maxCoupons]

@@ -53,7 +53,7 @@ class Solution2(object):
                 if i == 0 or not s[i-1].isdigit():
                     operands.append(int(operand[::-1]))
                     operand = ""
-            elif s[i] == ')' or s[i] == '+' or s[i] == '-':
+            elif s[i] in [')', '+', '-']:
                 operators.append(s[i])
             elif s[i] == '(':
                 while operators[-1] != ')':

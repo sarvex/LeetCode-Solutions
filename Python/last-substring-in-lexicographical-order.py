@@ -37,10 +37,8 @@ class Solution2(object):
             count[s[i]].append(i)
 
         max_c = max(count.iterkeys())
-        starts = {}
-        for i in count[max_c]:
-            starts[i] = i+1
-        while len(starts)-1 > 0:
+        starts = {i: i+1 for i in count[max_c]}
+        while len(starts) > 1:
             lookup = set()
             next_count = collections.defaultdict(list)
             for start, end in starts.iteritems():
@@ -49,11 +47,12 @@ class Solution2(object):
                     continue
                 next_count[s[end]].append(start)				
                 if end in starts:  # overlapped
-                    lookup.add(end)			
-            next_starts = {}
+                    lookup.add(end)
             max_c = max(next_count.iterkeys())
-            for start in next_count[max_c]:
-                if start not in lookup:
-                    next_starts[start] = starts[start]+1
+            next_starts = {
+                start: starts[start] + 1
+                for start in next_count[max_c]
+                if start not in lookup
+            }
             starts = next_starts
         return s[next(starts.iterkeys()):]

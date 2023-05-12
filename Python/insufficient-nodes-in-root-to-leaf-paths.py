@@ -22,6 +22,4 @@ class Solution(object):
             return None if root.val < limit else root
         root.left = self.sufficientSubset(root.left, limit-root.val)
         root.right = self.sufficientSubset(root.right, limit-root.val)
-        if not root.left and not root.right:
-            return None
-        return root
+        return None if not root.left and not root.right else root

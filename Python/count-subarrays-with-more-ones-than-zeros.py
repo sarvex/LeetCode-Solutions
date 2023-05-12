@@ -40,15 +40,14 @@ class Solution2(object):
         result = total = 0
         for i, x in enumerate(nums):
             total += 1 if x == 1 else -1
-            if total not in lookup:
-                if total > 0:
-                    dp[i] = i+1
-            else:
+            if total in lookup:
                 j = lookup[total]
                 if j != -1:
                     dp[i] = dp[j]
                 if x > 0:
                     dp[i] += (i-1)-j
+            elif total > 0:
+                dp[i] = i+1
             lookup[total] = i
             result = (result+dp[i])%MOD
         return result

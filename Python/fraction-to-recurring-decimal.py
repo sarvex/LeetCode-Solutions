@@ -8,12 +8,13 @@ class Solution(object):
         :type denominator: int
         :rtype: str
         """
-        result = ""
-        if (numerator > 0 and denominator < 0) or (numerator < 0 and denominator > 0):
-            result = "-"
-
         dvd, dvs = abs(numerator), abs(denominator)
-        result += str(dvd / dvs)
+        result = (
+            "-"
+            if (numerator > 0 and denominator < 0)
+            or (numerator < 0 and denominator > 0)
+            else ""
+        ) + str(dvd / dvs)
         dvd %= dvs
 
         if dvd > 0:
@@ -27,7 +28,7 @@ class Solution(object):
             dvd %= dvs
 
         if dvd in lookup:
-            result = result[:lookup[dvd]] + "(" + result[lookup[dvd]:] + ")"
+            result = f"{result[:lookup[dvd]]}({result[lookup[dvd]:]})"
 
         return result
 

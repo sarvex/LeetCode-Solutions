@@ -47,10 +47,7 @@ class Solution2(object):
             base >>= 2
 
             while base:
-                if (n & base) == 0:
-                    node = node.left
-                else:
-                    node = node.right
+                node = node.left if (n & base) == 0 else node.right
                 base >>= 1
             return bool(node)
 

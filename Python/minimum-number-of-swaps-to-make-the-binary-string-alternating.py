@@ -13,13 +13,11 @@ class Solution(object):
                 diff += int(c) != x
                 x ^= 1
             return diff//2
-    
+
         ones = s.count('1')
-        zeros = len(s)-ones 
+        zeros = len(s)-ones
         if abs(ones-zeros) > 1:
             return -1
         if ones > zeros:
             return cost(s, 1)
-        if ones < zeros:
-            return cost(s, 0)
-        return min(cost(s, 1), cost(s, 0))
+        return cost(s, 0) if ones < zeros else min(cost(s, 1), cost(s, 0))

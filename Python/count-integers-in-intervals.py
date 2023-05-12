@@ -20,7 +20,7 @@ class CountIntervals(object):
         :rtype: None
         """
         i = self.__sl.bisect_right((left,))
-        if i-1 >= 0 and self.__sl[i-1][1]+1 >= left:
+        if i >= 1 and self.__sl[i - 1][1] + 1 >= left:
             i -= 1
             left = self.__sl[i][0]
         to_remove = []

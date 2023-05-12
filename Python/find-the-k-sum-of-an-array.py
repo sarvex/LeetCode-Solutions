@@ -21,6 +21,6 @@ class Solution(object):
             if i == len(sorted_vals):
                 continue
             heapq.heappush(max_heap, (-(result-sorted_vals[i]), i+1))
-            if i-1 >= 0:
+            if i >= 1:
                 heapq.heappush(max_heap, (-(result+sorted_vals[i-1]-sorted_vals[i]), i+1))
         return result

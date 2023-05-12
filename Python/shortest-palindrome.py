@@ -22,7 +22,7 @@ class Solution(object):
         if not s:
             return s
 
-        A = s + '#' + s[::-1]
+        A = f'{s}#{s[::-1]}'
         return s[getPrefix(A)[-1]+1:][::-1] + s
 
 
@@ -79,11 +79,7 @@ class Solution3(object):
         center, right = 0, 0
         for i in xrange(1, len(string) - 1):
             i_mirror = 2 * center - i
-            if right > i:
-                palindrome[i] = min(right - i, palindrome[i_mirror])
-            else:
-                palindrome[i] = 0
-
+            palindrome[i] = min(right - i, palindrome[i_mirror]) if right > i else 0
             while string[i + 1 + palindrome[i]] == string[i - 1 - palindrome[i]]:
                 palindrome[i] += 1
 
@@ -94,5 +90,5 @@ class Solution3(object):
         for i in xrange(1, len(string) - 1):
             if i - palindrome[i] == 1:
                 max_len = palindrome[i]
-        return s[len(s)-1:max_len-1:-1] + s
+        return s[-1:max_len-1:-1] + s
 

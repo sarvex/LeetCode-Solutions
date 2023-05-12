@@ -14,7 +14,7 @@ class Solution(object):
 
         def can_reach(grid, b, p, t):
             closer, detour = [p], []
-            lookup = set([b])
+            lookup = {b}
             while closer or detour:
                 if not closer:
                     closer, detour = detour, closer
@@ -34,7 +34,7 @@ class Solution(object):
 
         def g(a, b):
             return abs(a[0]-b[0])+abs(a[1]-b[1])
-        
+
         def a_star(grid, b, p, t):
             f, dh = g(b, t), 2
             closer, detour = [(b, p)], []
@@ -58,7 +58,7 @@ class Solution(object):
                         continue
                     (closer if dot((dx, dy), (t[0]-b[0], t[1]-b[1])) > 0 else detour).append((nb, b))
             return -1
-        
+
         b, p, t = None, None, None
         for i in xrange(len(grid)):
             for j in xrange(len(grid[0])):

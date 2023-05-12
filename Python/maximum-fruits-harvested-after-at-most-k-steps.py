@@ -14,8 +14,7 @@ class Solution(object):
         for p, a in fruits:
             cnt[p] = a
         prefix = [0]
-        for x in cnt:
-            prefix.append(prefix[-1]+x)
+        prefix.extend(prefix[-1]+x for x in cnt)
         result = 0
         for left_dist in xrange(min(startPos, k)+1):
             right_dist = max(k-2*left_dist, 0)            

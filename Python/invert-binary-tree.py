@@ -56,8 +56,7 @@ class Solution2(object):
     # @return {TreeNode}
     def invertTree(self, root):
         if root is not None:
-            nodes = []
-            nodes.append(root)
+            nodes = [root]
             while nodes:
                 node = nodes.pop()
                 node.left, node.right = node.right, node.left

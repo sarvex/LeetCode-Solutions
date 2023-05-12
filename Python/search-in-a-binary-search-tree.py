@@ -16,9 +16,6 @@ class Solution(object):
         :rtype: TreeNode
         """
         while root and val != root.val:
-            if val < root.val:
-                root = root.left
-            else:
-                root = root.right
+            root = root.left if val < root.val else root.right
         return root
 

@@ -21,7 +21,7 @@ class Solution(object):
             start = i
             for c in T:
                 start = lookup[start][ord(c)-ord('a')]
-                if start == None:
+                if start is None:
                     break
             else:
                 if start-i < min_len:

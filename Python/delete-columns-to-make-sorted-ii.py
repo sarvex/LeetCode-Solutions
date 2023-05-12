@@ -13,7 +13,7 @@ class Solution(object):
             if any(A[i][j] > A[i+1][j] for i in unsorted):
                 result += 1
             else:
-                unsorted -= set(i for i in unsorted if A[i][j] < A[i+1][j])
+                unsorted -= {i for i in unsorted if A[i][j] < A[i+1][j]}
         return result
 
 

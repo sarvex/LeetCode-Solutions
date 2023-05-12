@@ -23,6 +23,4 @@ class ProductOfNumbers(object):
         :type k: int
         :rtype: int
         """
-        if len(self.__accu) <= k:
-            return 0
-        return self.__accu[-1] // self.__accu[-1-k]
+        return 0 if len(self.__accu) <= k else self.__accu[-1] // self.__accu[-1-k]

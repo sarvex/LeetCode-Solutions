@@ -39,6 +39,6 @@ class Solution2(object):
         :rtype: int
         """
         prev, current = 0, 1
-        for i in xrange(N):
+        for _ in xrange(N):
             prev, current = current, prev + current,
         return prev

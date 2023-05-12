@@ -11,7 +11,12 @@ class Solution(object):
         result = 0
         for i in xrange(len(s)):
             left, right = i+1, i
-            while left-1 >= 0 and right+1 < len(s) and s[left-1] == '0' and s[right+1] == '1':
+            while (
+                left >= 1
+                and right + 1 < len(s)
+                and s[left - 1] == '0'
+                and s[right + 1] == '1'
+            ):
                 left -= 1
                 right += 1
             result = max(result, right-left+1)

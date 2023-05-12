@@ -37,12 +37,9 @@ class Solution2(object):
         """
         def gen_inorder(root):
             if root:
-                for n in gen_inorder(root.left):
-                    yield n
-
+                yield from gen_inorder(root.left)
                 yield root.val
 
-                for n in gen_inorder(root.right):
-                    yield n
+                yield from gen_inorder(root.right)
 
         return next(islice(gen_inorder(root), k-1, k))

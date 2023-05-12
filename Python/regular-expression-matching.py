@@ -5,7 +5,7 @@ class Solution(object):
     # @return a boolean
     def isMatch(self, s, p):
         k = 3
-        result = [[False for j in xrange(len(p) + 1)] for i in xrange(k)]
+        result = [[False for _ in xrange(len(p) + 1)] for _ in xrange(k)]
 
         result[0][0] = True
         for i in xrange(2, len(p) + 1):
@@ -29,7 +29,7 @@ class Solution(object):
 class Solution2(object):
     # @return a boolean
     def isMatch(self, s, p):
-        result = [[False for j in xrange(len(p) + 1)] for i in xrange(len(s) + 1)]
+        result = [[False for _ in xrange(len(p) + 1)] for _ in xrange(len(s) + 1)]
 
         result[0][0] = True
         for i in xrange(2, len(p) + 1):
@@ -52,19 +52,22 @@ class Solution3(object):
         p_ptr, s_ptr, last_s_ptr, last_p_ptr = 0, 0, -1, -1
         last_ptr = []
         while s_ptr < len(s):
-            if p_ptr < len(p) and (p_ptr == len(p) - 1 or p[p_ptr + 1] != '*') and \
-            (s_ptr < len(s) and (p[p_ptr] == s[s_ptr] or p[p_ptr] == '.')):
-                    s_ptr += 1
-                    p_ptr += 1
+            if (
+                p_ptr < len(p)
+                and (p_ptr == len(p) - 1 or p[p_ptr + 1] != '*')
+                and p[p_ptr] in [s[s_ptr], '.']
+            ):
+                s_ptr += 1
+                p_ptr += 1
             elif p_ptr < len(p) - 1 and (p_ptr != len(p) - 1 and p[p_ptr + 1] == '*'):
                 p_ptr += 2
                 last_ptr.append([s_ptr, p_ptr])
-            elif  last_ptr:
+            elif last_ptr:
                 [last_s_ptr, last_p_ptr] = last_ptr.pop()
                 while last_ptr and p[last_p_ptr - 2] != s[last_s_ptr] and p[last_p_ptr - 2] != '.':
                     [last_s_ptr, last_p_ptr] = last_ptr.pop()
 
-                if p[last_p_ptr - 2] == s[last_s_ptr] or p[last_p_ptr - 2] == '.':
+                if p[last_p_ptr - 2] in [s[last_s_ptr], '.']:
                     last_s_ptr += 1
                     s_ptr = last_s_ptr
                     p_ptr = last_p_ptr
@@ -87,14 +90,14 @@ class Solution4(object):
             return not s
 
         if len(p) == 1 or p[1] != '*':
-            if len(s) > 0 and (p[0] == s[0] or p[0] == '.'):
-                return self.isMatch(s[1:], p[1:])
-            else:
-                return False
-        else:
-            while len(s) > 0 and (p[0] == s[0] or p[0] == '.'):
-                if self.isMatch(s, p[2:]):
-                    return True
-                s = s[1:]
-            return self.isMatch(s, p[2:])
+            return (
+                self.isMatch(s[1:], p[1:])
+                if len(s) > 0 and p[0] in [s[0], '.']
+                else False
+            )
+        while len(s) > 0 and p[0] in [s[0], '.']:
+            if self.isMatch(s, p[2:]):
+                return True
+            s = s[1:]
+        return self.isMatch(s, p[2:])
 

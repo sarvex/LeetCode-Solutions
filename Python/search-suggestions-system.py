@@ -110,7 +110,7 @@ class Solution3(object):
             start = bisect.bisect_left(products, prefix)  # Time: O(log(n * l))
             new_products = []
             for j in xrange(start, len(products)):  # Time: O(n * l)
-                if not (i < len(products[j]) and products[j][i] == c):
+                if i >= len(products[j]) or products[j][i] != c:
                     break
                 new_products.append(products[j])
             products = new_products

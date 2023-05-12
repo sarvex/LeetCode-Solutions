@@ -11,7 +11,7 @@ class Solution(object):
         :rtype: int
         """
         result = 0
-        dp = [collections.defaultdict(int) for i in xrange(len(A))]
+        dp = [collections.defaultdict(int) for _ in xrange(len(A))]
         for i in xrange(1, len(A)):
             for j in xrange(i):
                 diff = A[i]-A[j]

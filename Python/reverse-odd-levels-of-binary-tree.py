@@ -27,8 +27,7 @@ class Solution(object):
                 break
             new_q = []
             for node in q:
-                new_q.append(node.left)
-                new_q.append(node.right)
-            q = new_q       
+                new_q.extend((node.left, node.right))
+            q = new_q
             parity ^= 1
         return root

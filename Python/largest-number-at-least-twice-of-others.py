@@ -8,7 +8,5 @@ class Solution(object):
         :rtype: int
         """
         m = max(nums)
-        if all(m >= 2*x for x in nums if x != m):
-            return nums.index(m)
-        return -1
+        return nums.index(m) if all(m >= 2*x for x in nums if x != m) else -1
 

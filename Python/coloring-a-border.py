@@ -15,7 +15,7 @@ class Solution(object):
         """
         directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 
-        lookup, q, borders = set([(r0, c0)]), collections.deque([(r0, c0)]), []
+        lookup, q, borders = {(r0, c0)}, collections.deque([(r0, c0)]), []
         while q:
             r, c = q.popleft()
             is_border = False
@@ -23,8 +23,8 @@ class Solution(object):
             for direction in directions:
                 nr, nc = r+direction[0], c+direction[1]
                 if not ((0 <= nr < len(grid)) and \
-                        (0 <= nc < len(grid[0])) and \
-                        grid[nr][nc] == grid[r][c]):
+                            (0 <= nc < len(grid[0])) and \
+                            grid[nr][nc] == grid[r][c]):
                     is_border = True
                     continue
                 if (nr, nc) in lookup:

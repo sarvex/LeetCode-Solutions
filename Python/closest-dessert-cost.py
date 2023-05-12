@@ -73,16 +73,16 @@ class Solution3(object):
         :rtype: int
         """
         max_count = 2
-        combs = set([0])
+        combs = {0}
         for t in toppingCosts:
-            combs = set([c+i*t for c in combs for i in xrange(max_count+1)])
+            combs = {c+i*t for c in combs for i in xrange(max_count+1)}
         result, combs = float("inf"), sorted(combs)
         for b in baseCosts:
             idx = bisect.bisect_left(combs, target-b)
             if idx < len(combs):
                 result = min(result, b+combs[idx], key=lambda x: (abs(x-target), x))
             if idx > 0:
-                result = min(result, b+combs[idx-1], key=lambda x: (abs(x-target), x))        
+                result = min(result, b+combs[idx-1], key=lambda x: (abs(x-target), x))
         return result
 
 
@@ -97,11 +97,11 @@ class Solution4(object):
         :rtype: int
         """
         max_count = 2
-        combs = set([0])
+        combs = {0}
         for t in toppingCosts:
-            combs = set([c+i*t for c in combs for i in xrange(max_count+1)])
+            combs = {c+i*t for c in combs for i in xrange(max_count+1)}
         result = float("inf")
         for b in baseCosts:
             for c in combs:
-                result = min(result, b+c, key=lambda x: (abs(x-target), x))      
+                result = min(result, b+c, key=lambda x: (abs(x-target), x))
         return result

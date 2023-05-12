@@ -11,9 +11,7 @@ class Solution(object):
         R, C = len(A), len(A[0])
         result = 0
         for c in xrange(C):
-            col = 0
-            for r in xrange(R):
-                col += A[r][c] ^ A[r][0]
+            col = sum(A[r][c] ^ A[r][0] for r in xrange(R))
             result += max(col, R-col) * 2**(C-1-c)
         return result
 

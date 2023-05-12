@@ -15,7 +15,7 @@ class Solution(object):
         :type passingFees: List[int]
         :rtype: int
         """        
-        adj = [[] for i in xrange(len(passingFees))]
+        adj = [[] for _ in xrange(len(passingFees))]
         for u, v, w in edges:
             adj[u].append((v, w))
             adj[v].append((u, w))

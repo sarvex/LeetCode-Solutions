@@ -22,10 +22,8 @@ class Solution(object):
             if left == UNCOVERED or right == UNCOVERED:
                 result[0] += 1
                 return CAMERA
-            if left == CAMERA or right == CAMERA:
-                return COVERED
-            return UNCOVERED
-        
+            return COVERED if left == CAMERA or right == CAMERA else UNCOVERED
+
         result = [0]
         if dfs(root, result) == UNCOVERED:
             result[0] += 1

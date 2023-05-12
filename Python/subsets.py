@@ -30,10 +30,7 @@ class Solution2(object):
         nums.sort()
 
         while i < count:
-            cur = []
-            for j in xrange(len(nums)):
-                if i & 1 << j:
-                    cur.append(nums[j])
+            cur = [nums[j] for j in xrange(len(nums)) if i & 1 << j]
             result.append(cur)
             i += 1
 

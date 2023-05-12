@@ -47,9 +47,8 @@ class Trie(object):
         for i in reversed(xrange(32)):
             curr = (num>>i) & 1
             bit = (limit>>i) & 1
-            if bit:
-                if curr in node:
-                    result += node[0^curr]["_count"]  # current limit is xxxxx1*****, count xor pair with xxxxx0***** pattern
+            if bit and curr in node:
+                result += node[0^curr]["_count"]  # current limit is xxxxx1*****, count xor pair with xxxxx0***** pattern
             if bit^curr not in node:
                 break
             node = node[bit^curr]

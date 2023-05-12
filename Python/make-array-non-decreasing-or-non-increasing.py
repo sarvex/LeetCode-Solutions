@@ -20,8 +20,8 @@ class Solution(object):
                     heapq.heappush(max_heap, -x)
                 heapq.heappush(max_heap, -x)
             return result
-        
-        return min(f(nums), f((x for x in reversed(nums))))
+
+        return min(f(nums), f(iter(reversed(nums))))
 
 
 # Time:  O(n^2)
@@ -46,4 +46,4 @@ class Solution2(object):
                     prev = i
             return dp[vals[-1]]
 
-        return min(f(nums), f((x for x in reversed(nums))))
+        return min(f(nums), f(iter(reversed(nums))))

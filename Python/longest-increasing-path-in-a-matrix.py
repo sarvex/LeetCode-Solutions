@@ -12,37 +12,39 @@ class Solution(object):
 
         if not matrix:
             return 0
-        
+
         in_degree = [[0]*len(matrix[0]) for _ in xrange(len(matrix))]
         for i in xrange(len(matrix)):
             for j in xrange(len(matrix[0])):
                 for di, dj in directions:
                     ni, nj = i+di, j+dj
-                    if not (0 <= ni < len(matrix) and
-                            0 <= nj < len(matrix[0]) and
-                            matrix[ni][nj] > matrix[i][j]):
+                    if (
+                        not 0 <= ni < len(matrix)
+                        or not 0 <= nj < len(matrix[0])
+                        or matrix[ni][nj] <= matrix[i][j]
+                    ):
                         continue
                     in_degree[i][j] += 1
         q = []
         for i in xrange(len(matrix)):
-            for j in xrange(len(matrix[0])):
-                if not in_degree[i][j]:
-                    q.append((i, j))
+            q.extend((i, j) for j in xrange(len(matrix[0])) if not in_degree[i][j])
         result = 0
         while q:
             new_q = []
             for i, j in q:
                 for di, dj in directions:
                     ni, nj = i+di, j+dj
-                    if not (0 <= ni < len(matrix) and
-                            0 <= nj < len(matrix[0]) and
-                            matrix[i][j] > matrix[ni][nj]):
+                    if (
+                        not 0 <= ni < len(matrix)
+                        or not 0 <= nj < len(matrix[0])
+                        or matrix[i][j] <= matrix[ni][nj]
+                    ):
                         continue
                     in_degree[ni][nj] -= 1
                     if not in_degree[ni][nj]:
                         new_q.append((ni, nj))
             q = new_q
-            result += 1         
+            result += 1
         return result
 
 

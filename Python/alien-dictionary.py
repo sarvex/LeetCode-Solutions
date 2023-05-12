@@ -40,10 +40,7 @@ class Solution(object):
 
                 del out_degree[precedence]
 
-        if out_degree:
-            return ""
-
-        return "".join(result)
+        return "" if out_degree else "".join(result)
 
     # Construct the graph.
     def findEdges(self, word1, word2, in_degree, out_degree):

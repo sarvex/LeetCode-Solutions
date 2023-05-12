@@ -18,11 +18,7 @@ class Solution(object):
         valid_half_subsets = [0] * (1 << len(nums))
 
         for subset in xrange(fullset+1):
-            subset_total_len = 0
-            for i in xrange(len(nums)):
-                if subset & (1 << i):
-                    subset_total_len += nums[i]
-
+            subset_total_len = sum(nums[i] for i in xrange(len(nums)) if subset & (1 << i))
             if subset_total_len == side_len:
                 for used_subset in used_subsets:
                     if (used_subset & subset) == 0:

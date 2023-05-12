@@ -10,7 +10,7 @@ class Solution(object):
         :type prices: List[List[int]]
         :rtype: int
         """
-        dp = [[0]*(n+1) for i in xrange(m+1)]
+        dp = [[0]*(n+1) for _ in xrange(m+1)]
         for h, w, p in prices:
             dp[h][w] = p
         for i in xrange(1, m+1):

@@ -9,6 +9,5 @@ class Solution(object):
         :rtype: List[int]
         """
         result = [first]
-        for x in encoded:
-            result.append(result[-1]^x)
+        result.extend(result[-1]^x for x in encoded)
         return result

@@ -111,7 +111,7 @@ class Solution2(object):
                     r += 1
             order[left:right+1] = tmp
 
-        points = [(i, j) for i, j in itertools.izip(nums1, nums2)]
+        points = list(itertools.izip(nums1, nums2))
         result = [INF]*3
         lookup = {}
         for i in reversed(xrange(len(points))):
@@ -175,7 +175,7 @@ class Solution3(object):
                     j = len(stripe)
                 assert(j-(i+1) <= MAX_NEIGHBOR_COUNT)
 
-        points = [(i, j) for i, j in itertools.izip(nums1, nums2)]
+        points = list(itertools.izip(nums1, nums2))
         result = [INF]*3
         lookup = {}
         for i in reversed(xrange(len(points))):
@@ -204,7 +204,6 @@ class Solution4(object):
         :rtype: List[int]
         """
         INF = float("inf")
-        # Range Maximum Query
         class SegmentTree(object):
             def __init__(self, N,
                          build_fn=lambda _: [-INF, -INF],  # modified
@@ -248,7 +247,7 @@ class Solution4(object):
                 a, b = b, a
             return [abs(points[a][0]-points[b][0])+abs(points[a][1]-points[b][1]), a, b]
 
-        points = [(i, j) for i, j in itertools.izip(nums1, nums2)]
+        points = list(itertools.izip(nums1, nums2))
         result = [INF]*3
         lookup = {}
         for i in reversed(xrange(len(points))):
@@ -259,7 +258,7 @@ class Solution4(object):
             return result[1]
         order = range(len(points))
         order.sort(key=lambda x: points[x][0])
-        y_set = set(y for _, y in points)
+        y_set = {y for _, y in points}
         y_to_idx = {y:i for i, y in enumerate(sorted(y_set))}
         st1, st2 = SegmentTree(len(y_to_idx)), SegmentTree(len(y_to_idx))
         for i in order:

@@ -34,6 +34,4 @@ class Solution2(object):
             return children-1
         if q == children:
             return q-int(r != 0)
-        if q == children-1:
-            return q-int(r == 3)
-        return q
+        return q-int(r == 3) if q == children-1 else q

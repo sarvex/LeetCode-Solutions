@@ -17,7 +17,7 @@ class Solution(object):
             if i+1 < len(travel):
                 travel[i+1] += travel[i]
             result += len(garbage[i])
-        result += sum(travel[v-1] for _, v in lookup.iteritems() if v-1 >= 0)
+        result += sum(travel[v-1] for _, v in lookup.iteritems() if v >= 1)
         return result
 
 
@@ -35,8 +35,7 @@ class Solution2(object):
         for t in 'MPG':
             curr = 0
             for i in xrange(len(garbage)):
-                cnt = garbage[i].count(t) 
-                if cnt:
+                if cnt := garbage[i].count(t):
                     result += curr+cnt
                     curr = 0
                 if i < len(travel):

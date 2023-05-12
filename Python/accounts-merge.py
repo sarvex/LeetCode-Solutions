@@ -43,7 +43,7 @@ class Solution(object):
                                      email_to_id[account[i]])
 
         result = collections.defaultdict(list)
-        for email in email_to_name.keys():
+        for email in email_to_name:
             result[union_find.find_set(email_to_id[email])].append(email)
         for emails in result.values():
             emails.sort()

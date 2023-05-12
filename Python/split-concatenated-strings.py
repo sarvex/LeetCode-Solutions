@@ -14,7 +14,7 @@ class Solution(object):
 
         result, st = "a", 0
         for i in xrange(len(strs)):
-            body = "".join([s[st + len(strs[i]):], s[0:st]])
+            body = "".join([s[st + len(strs[i]):], s[:st]])
             for p in strs[i], strs[i][::-1]:
                 for j in xrange(len(strs[i])):
                     if p[j] >= result[0]:

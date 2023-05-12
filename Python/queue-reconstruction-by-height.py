@@ -19,7 +19,7 @@ class Solution(object):
                 index -= len(block)
             block.insert(index, p)
 
-            if len(block) * len(block) > len(people):
+            if len(block) ** 2 > len(people):
                 blocks.insert(i+1, block[len(block)/2:])
                 del block[len(block)/2:]
 

@@ -20,6 +20,5 @@ class Solution(object):
                 curr.append(frags[i])
                 result[".".join(reversed(curr))] += count
 
-        return ["{} {}".format(count, domain) \
-                for domain, count in result.iteritems()]
+        return [f"{count} {domain}" for domain, count in result.iteritems()]
 

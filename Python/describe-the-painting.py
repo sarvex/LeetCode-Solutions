@@ -14,7 +14,7 @@ class Solution(object):
         for s, e, c in segments:
             counts[s] += c
             counts[e] -= c
-        points = sorted(x for x in counts.iteritems())
+        points = sorted(iter(counts.iteritems()))
 
         result = []
         overlap = prev = 0

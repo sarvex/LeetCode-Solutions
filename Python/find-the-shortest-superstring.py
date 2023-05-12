@@ -30,7 +30,7 @@ class Solution(object):
                     if value > dp[mask][bit]:
                         dp[mask][bit] = value
                         prev[mask][bit] = i
-        
+
         bit = max(xrange(n), key = dp[-1].__getitem__)
         words = []
         mask = (1<<n)-1
@@ -42,7 +42,8 @@ class Solution(object):
         words.extend([i for i in xrange(n) if i not in lookup])
 
         result = [A[words[0]]]
-        for i in xrange(1, len(words)):
-            overlap = overlaps[words[i-1]][words[i]]
-            result.append(A[words[i]][overlap:])
+        result.extend(
+            A[words[i]][overlaps[words[i - 1]][words[i]] :]
+            for i in xrange(1, len(words))
+        )
         return "".join(result)

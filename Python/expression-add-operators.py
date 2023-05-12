@@ -37,17 +37,17 @@ class Solution(object):
                     break
 
                 # Case '+':
-                expr.append("+" + val_str)
+                expr.append(f"+{val_str}")
                 self.addOperatorsDFS(num, target, i + 1, operand1 + operand2, val, expr, result)
                 expr.pop()
 
                 # Case '-':
-                expr.append("-" + val_str)
+                expr.append(f"-{val_str}")
                 self.addOperatorsDFS(num, target, i + 1, operand1 + operand2, -val, expr, result)
                 expr.pop()
 
                 # Case '*':
-                expr.append("*" + val_str)
+                expr.append(f"*{val_str}")
                 self.addOperatorsDFS(num, target, i + 1, operand1, operand2 * val, expr, result)
                 expr.pop()
 

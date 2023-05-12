@@ -23,7 +23,5 @@ class Solution(object):
 
         max_heap, lookup = [], set()
         findSecondMinimumValueHelper(root, max_heap, lookup)
-        if len(max_heap) < 2:
-            return -1
-        return -max_heap[0]
+        return -1 if len(max_heap) < 2 else -max_heap[0]
 

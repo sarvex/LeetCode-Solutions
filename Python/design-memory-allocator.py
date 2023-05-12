@@ -46,9 +46,13 @@ class Allocator(object):
             if i+1 < len(self.__avails) and self.__avails[i][0]+self.__avails[i][1] == self.__avails[i+1][0]:
                 self.__avails[i][1] += self.__avails[i+1][1]
                 del self.__avails[i+1]
-            if i-1 >= 0 and self.__avails[i-1][0]+self.__avails[i-1][1] == self.__avails[i][0]:
+            if (
+                i >= 1
+                and self.__avails[i - 1][0] + self.__avails[i - 1][1]
+                == self.__avails[i][0]
+            ):
                 self.__avails[i-1][1] += self.__avails[i][1]
-                del self.__avails[i]            
+                del self.__avails[i]
             result += s
         del self.__lookup[mID]
         return result

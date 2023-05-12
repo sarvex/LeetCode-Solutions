@@ -25,9 +25,6 @@ class Solution(object):
                 if (i & bit) == 0:
                     nxt = i | bit
                     sums[nxt] = sums[i]+debts[j]
-                    if sums[nxt] == 0:
-                        dp[nxt] = max(dp[nxt], dp[i]+1)
-                    else:
-                        dp[nxt] = max(dp[nxt], dp[i])
+                    dp[nxt] = max(dp[nxt], dp[i]+1) if sums[nxt] == 0 else max(dp[nxt], dp[i])
                 bit <<= 1
         return len(debts)-dp[-1]

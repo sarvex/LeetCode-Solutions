@@ -10,7 +10,16 @@ class Solution(object):
         :type arr: List[int]
         :rtype: int
         """
-        for x in [arr[len(arr)//4], arr[len(arr)//2], arr[len(arr)*3//4]]:
-            if (bisect.bisect_right(arr, x) - bisect.bisect_left(arr, x)) * 4 > len(arr):
-                return x
-        return -1
+        return next(
+            (
+                x
+                for x in [
+                    arr[len(arr) // 4],
+                    arr[len(arr) // 2],
+                    arr[len(arr) * 3 // 4],
+                ]
+                if (bisect.bisect_right(arr, x) - bisect.bisect_left(arr, x)) * 4
+                > len(arr)
+            ),
+            -1,
+        )

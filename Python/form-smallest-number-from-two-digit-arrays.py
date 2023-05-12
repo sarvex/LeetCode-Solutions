@@ -9,8 +9,7 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: int
         """
-        common = set(nums1)&set(nums2)
-        if common:
+        if common := set(nums1) & set(nums2):
             return min(common)
         mn1, mn2 = min(nums1), min(nums2)
         if mn1 > mn2:

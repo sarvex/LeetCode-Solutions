@@ -27,16 +27,14 @@ class Solution(object):
         def optimized_possible_numbers(s):
             assert(len(s) <= 3)
             result = {int(s)}
-            if len(s) >= 2:
+            if len(s) >= 2 and s[1] != '0':
+                result.add(int(s[:1])+int(s[1:]))
+            if len(s) >= 3 and s[2] != '0':
+                result.add(int(s[:2])+int(s[2:]))
                 if s[1] != '0':
-                    result.add(int(s[:1])+int(s[1:]))
-            if len(s) >= 3:
-                if s[2] != '0':
-                    result.add(int(s[:2])+int(s[2:]))
-                    if s[1] != '0':
-                        result.add(int(s[0:1])+int(s[1:2])+int(s[2:]))
+                    result.add(int(s[:1]) + int(s[1:2]) + int(s[2:]))
             return result
-    
+
         def memoization(s1, s2, i, j, k, lookup):
             if (i, j, k) not in lookup:
                 if i == len(s1) and j == len(s2):

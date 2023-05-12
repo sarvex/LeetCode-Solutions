@@ -37,7 +37,7 @@ class Solution(object):
                     i //= d
                 result.append(d)
             d = 3
-            while d*d <= i:
+            while d**2 <= i:
                 if i%d == 0:
                     while i%d == 0:
                         i //= d
@@ -46,7 +46,7 @@ class Solution(object):
             if i > 2:
                 result.append(i)
             return result
-        
+
         union_find = UnionFind(len(A))
         nodesWithCommonFactor = collections.defaultdict(int)
         for i in xrange(len(A)):

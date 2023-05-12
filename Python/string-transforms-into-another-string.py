@@ -14,7 +14,11 @@ class Solution(object):
         if str1 == str2:
             return True
         lookup = {}
-        for i, j in itertools.izip(str1, str2):
-            if lookup.setdefault(i, j) != j:
-                return False
-        return len(set(str2)) < 26
+        return next(
+            (
+                False
+                for i, j in itertools.izip(str1, str2)
+                if lookup.setdefault(i, j) != j
+            ),
+            len(set(str2)) < 26,
+        )

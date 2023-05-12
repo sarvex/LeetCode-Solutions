@@ -16,8 +16,7 @@ class Solution(object):
         result = [0]*len(arr)
         for idxs in lookup.itervalues():
             prefix = [0]
-            for i in idxs:
-                prefix.append(prefix[-1]+i)
+            prefix.extend(prefix[-1]+i for i in idxs)
             for i, idx in enumerate(idxs):
                 result[idx] = (idx*(i+1)-prefix[i+1]) + ((prefix[len(idxs)]-prefix[i])-idx*(len(idxs)-i))
         return result

@@ -36,9 +36,7 @@ class Solution(object):
             components[union_find.find_set(i)].append(s[i])
         for i in components.iterkeys(): 
             components[i].sort(reverse=True)
-        result = []
-        for i in xrange(len(s)): 
-            result.append(components[union_find.find_set(i)].pop())
+        result = [components[union_find.find_set(i)].pop() for i in xrange(len(s))]
         return "".join(result)
 
 

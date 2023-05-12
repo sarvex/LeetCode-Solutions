@@ -23,7 +23,10 @@ class Solution(object):
             return left
 
 
-        searchColumns = lambda image, has_one, mid: any([int(row[mid]) for row in image]) == has_one
+        searchColumns = (
+            lambda image, has_one, mid: any(int(row[mid]) for row in image)
+            == has_one
+        )
         left = binarySearch(0, y - 1, searchColumns, image, True)
         right = binarySearch(y + 1, len(image[0]) - 1, searchColumns, image, False)
 

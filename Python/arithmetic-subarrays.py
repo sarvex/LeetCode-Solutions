@@ -17,10 +17,8 @@ class Solution(object):
             if mx == mn:
                 return True
             d, r = divmod(mx-mn, len(n)-1)
-            if r:
-                return False
-            return all(i in lookup for i in xrange(mn, mx, d))
-    
+            return False if r else all(i in lookup for i in xrange(mn, mx, d))
+
         result = []
         for left, right in itertools.izip(l, r):
             result.append(is_arith(nums[left:right+1]))

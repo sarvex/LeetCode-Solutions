@@ -34,7 +34,7 @@ class Solution(object):
                     right = new_pivot_idx - 1
                 else:  # new_pivot_idx < k.
                     left = new_pivot_idx + 1
-        
+
         errors = []
         lower, upper = 0, 0
         for i, p in enumerate(map(float, prices)):
@@ -49,8 +49,5 @@ class Solution(object):
         kthElement(errors, lower_round_count)
         result = 0.0
         for i in xrange(len(errors)):
-            if i < lower_round_count:
-                result += errors[i]
-            else:
-                result += 1.0-errors[i]
+            result += errors[i] if i < lower_round_count else 1.0-errors[i]
         return "{:.3f}".format(result)

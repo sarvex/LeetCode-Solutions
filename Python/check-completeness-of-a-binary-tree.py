@@ -25,8 +25,7 @@ class Solution(object):
                     continue
                 if end:
                     return False
-                next_level.append(node.left)
-                next_level.append(node.right)
+                next_level.extend((node.left, node.right))
             current = next_level
         return  True
 
@@ -47,7 +46,6 @@ class Solution2(object):
             for node, v in current:
                 if not node:
                     continue
-                next_level.append((node.left, 2*v))
-                next_level.append((node.right, 2*v+1))
+                next_level.extend(((node.left, 2*v), (node.right, 2*v+1)))
             prev_level, current = current, next_level
         return prev_level[-1][1] == count

@@ -25,7 +25,7 @@ class Solution(object):
 class Solution2(object):
     def minDays(self, n):
         result = 0
-        q, lookup = [n], set([n])
+        q, lookup = [n], {n}
         while q:
             new_q = []
             for i in q: 

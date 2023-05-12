@@ -16,7 +16,5 @@ class Solution(object):
             return 3
         if m == 1 or n == 2:
             return 4
-        if m == 2:
-            return 7
-        return 8
+        return 7 if m == 2 else 8
 

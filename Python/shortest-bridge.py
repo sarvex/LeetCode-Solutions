@@ -25,8 +25,12 @@ class Solution(object):
                         node = s.pop()
                         for d in directions:
                             nei = node[0]+d[0], node[1]+d[1]
-                            if not (0 <= nei[0] < len(A) and 0 <= nei[1] < len(A[0])) or \
-                               nei in lookup or A[nei[0]][nei[1]] == 0:
+                            if (
+                                not 0 <= nei[0] < len(A)
+                                or not 0 <= nei[1] < len(A[0])
+                                or nei in lookup
+                                or A[nei[0]][nei[1]] == 0
+                            ):
                                 continue
                             s.append(nei)
                             lookup.add(nei)
@@ -44,8 +48,11 @@ class Solution(object):
                 return dis-1
             for d in directions:
                 nei = node[0]+d[0], node[1]+d[1]
-                if not (0 <= nei[0] < len(A) and 0 <= nei[1] < len(A[0])) or \
-                   nei in lookup:
+                if (
+                    not 0 <= nei[0] < len(A)
+                    or not 0 <= nei[1] < len(A[0])
+                    or nei in lookup
+                ):
                     continue
                 q.append((nei, dis+1))
                 lookup.add(nei)

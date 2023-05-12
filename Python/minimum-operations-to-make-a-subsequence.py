@@ -98,9 +98,7 @@ class SegmentTree(object):  # 0-based index
         return result
     
     def __str__(self):
-        showList = []
-        for i in xrange(self.N):
-            showList.append(self.query(i, i))
+        showList = [self.query(i, i) for i in xrange(self.N)]
         return ",".join(map(str, showList))
 
 
@@ -120,4 +118,4 @@ class Solution2(object):
             if x not in lookup:
                 continue
             st.update(lookup[x], lookup[x], st.query(0, lookup[x]-1)+1 if lookup[x] >= 1 else 1)
-        return len(target)-(st.query(0, len(lookup)-1) if len(lookup) >= 1 else 0)
+        return len(target) - (st.query(0, len(lookup)-1) if lookup else 0)

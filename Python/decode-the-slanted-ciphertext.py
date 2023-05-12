@@ -42,8 +42,7 @@ class Solution2(object):
         cols = len(encodedText)//rows
         result = []
         for i in xrange(cols):
-            for j in xrange(i, len(encodedText), cols+1):
-                result.append(encodedText[j])
+            result.extend(encodedText[j] for j in xrange(i, len(encodedText), cols+1))
         while result and result[-1] == ' ':
             result.pop()
         return "".join(result)

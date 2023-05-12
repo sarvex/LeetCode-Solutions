@@ -29,8 +29,7 @@ class Solution(object):
         """
         connections.sort(key = lambda x: x[2])
         union_find = UnionFind(N)
-        result = 0
-        for u, v, val in connections:
-            if union_find.union_set(u-1, v-1):
-                result += val
+        result = sum(
+            val for u, v, val in connections if union_find.union_set(u - 1, v - 1)
+        )
         return result if union_find.count == 1 else -1

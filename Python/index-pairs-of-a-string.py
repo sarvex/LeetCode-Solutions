@@ -54,13 +54,10 @@ class AhoTrie(object):
         return root
 
     def __get_ac_node_outputs(self, node):  # Time:  O(z)
-        result = []
-        for i in node.indices:
-            result.append(i)
+        result = list(node.indices)
         output = node.output
         while output:
-            for i in output.indices:
-                result.append(i)
+            result.extend(iter(output.indices))
             output = output.output
         return result
     
@@ -76,7 +73,6 @@ class Solution(object):
         reversed_words = [w[::-1] for w in words]
         trie = AhoTrie(reversed_words)
         for i in reversed(xrange(len(text))):
-            for j in trie.step(text[i]):
-                result.append([i, i+len(reversed_words[j])-1])
+            result.extend([i, i+len(reversed_words[j])-1] for j in trie.step(text[i]))
         result.reverse()
         return result

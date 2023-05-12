@@ -11,8 +11,7 @@ class Solution(object):
         if (len(stones)-1) % (K-1):
             return -1
         prefix = [0]
-        for x in stones:
-            prefix.append(prefix[-1]+x)
+        prefix.extend(prefix[-1]+x for x in stones)
         dp = [[0]*len(stones) for _ in xrange(len(stones))]
         for l in xrange(K-1, len(stones)):
             for i in xrange(len(stones)-l):

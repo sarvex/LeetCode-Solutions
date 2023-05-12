@@ -34,9 +34,13 @@ class Solution(object):
                 ret[:] = [True, 0, float("inf"), float("-inf")]
                 continue
             new_tmp = [[], []]
-            stk.append([node, new_tmp, ret])
-            stk.append([node.right, None, new_tmp[1]])
-            stk.append([node.left, None, new_tmp[0]])
+            stk.extend(
+                (
+                    [node, new_tmp, ret],
+                    [node.right, None, new_tmp[1]],
+                    [node.left, None, new_tmp[0]],
+                )
+            )
         return result
 
 

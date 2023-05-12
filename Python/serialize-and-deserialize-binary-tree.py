@@ -72,11 +72,9 @@ class Codec2(object):
                 yield '#'
             else:
                 yield str(node.val)
-                for n in gen_preorder(node.left):
-                    yield n
-                for n in gen_preorder(node.right):
-                    yield n
-                
+                yield from gen_preorder(node.left)
+                yield from gen_preorder(node.right)
+
         return ' '.join(gen_preorder(root))
         
     def deserialize(self, data):

@@ -7,7 +7,7 @@ class Solution(object):
         :type num: str
         :rtype: str
         """
-        for i in reversed(xrange(len(num))):
-            if int(num[i])%2:
-                return num[:i+1]
-        return ""
+        return next(
+            (num[: i + 1] for i in reversed(xrange(len(num))) if int(num[i]) % 2),
+            "",
+        )

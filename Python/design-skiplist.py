@@ -27,7 +27,7 @@ class Skiplist(object):
         :type target: int
         :rtype: bool
         """
-        return True if self.__find(target, self.__find_prev_nodes(target)) else False
+        return bool(self.__find(target, self.__find_prev_nodes(target)))
         
     def add(self, num):
         """

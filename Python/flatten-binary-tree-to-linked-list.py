@@ -14,14 +14,13 @@ class Solution(object):
         self.flattenRecu(root, None)
 
     def flattenRecu(self, root, list_head):
-        if root:
-            list_head = self.flattenRecu(root.right, list_head)
-            list_head = self.flattenRecu(root.left, list_head)
-            root.right = list_head
-            root.left = None
-            return root
-        else:
+        if not root:
             return list_head
+        list_head = self.flattenRecu(root.right, list_head)
+        list_head = self.flattenRecu(root.left, list_head)
+        root.right = list_head
+        root.left = None
+        return root
 
 class Solution2(object):
     list_head = None

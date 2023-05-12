@@ -10,8 +10,7 @@ class Solution(object):
         n = (n & 0x33333333) + ((n >> 2) & 0x33333333)
         n = (n & 0x0F0F0F0F) + ((n >> 4) & 0x0F0F0F0F)
         n = (n & 0x00FF00FF) + ((n >> 8) & 0x00FF00FF)
-        n = (n & 0x0000FFFF) + ((n >> 16) & 0x0000FFFF)
-        return n
+        return (n & 0x0000FFFF) + ((n >> 16) & 0x0000FFFF)
 
 
 # Time:  O(logn/4) = O(32/4 + 8*4) = O(32)

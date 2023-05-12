@@ -30,7 +30,7 @@ class Solution(object):
                     stk.append((1, (node.left, ret1)))
                 elif step == 2:
                     node, ret1, ret2, ret = params
-                    curr = int(node == p or node == q)
+                    curr = int(node in [p, q])
                     if curr+ret1[0]+ret2[0] == 2 and not result:
                         result = node
                     ret[0] = curr+ret1[0]+ret2[0]
@@ -54,7 +54,7 @@ class Solution2(object):
                 return 0
             left = dfs(node.left, p, q, result)
             right = dfs(node.right, p, q, result)
-            curr = int(node == p or node == q)
+            curr = int(node in [p, q])
             if curr+left+right == 2 and not result[0]:
                 result[0] = node
             return curr+left+right

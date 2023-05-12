@@ -23,6 +23,6 @@ class Solution(object):
                 continue
             result += 1
             start = lookup[0][ord(c)-ord('a')]
-            if start == None:
+            if start is None:
                 return -1
         return result

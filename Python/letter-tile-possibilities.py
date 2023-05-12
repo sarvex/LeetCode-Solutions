@@ -25,7 +25,7 @@ class Solution(object):
         # 2. let G1(x)*G2(x)*...*G26(x) = c0 + c1*x1 + ... + ck*x^k, k is the max number s.t. ck != 0
         #    => ci (1 <= i <= k) is the number we need to divide when permuting i letters
         #    => the answer will be : c1*1! + c2*2! + ... + ck*k!
-        
+
         coeff = [0.0]*(len(tiles)+1)
         coeff[0] = 1.0
         for i in count.itervalues():
@@ -37,10 +37,7 @@ class Solution(object):
                     new_coeff[j+k] += coeff[j]*1.0/fact[k]
             coeff = new_coeff
 
-        result = 0
-        for i in xrange(1, len(coeff)):
-            result += int(round(coeff[i]*fact[i]))
-        return result
+        return sum(int(round(coeff[i]*fact[i])) for i in xrange(1, len(coeff)))
 
 
 # Time:  O(r), r is the value of result

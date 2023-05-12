@@ -31,8 +31,8 @@ class Solution(object):
             i += 1
 
         # rearrange all the spaces to the left
-        equal_count = space_count//(word_count-1) if word_count-1 > 0 else 0
-        extra_count = space_count%(word_count-1) if word_count-1 > 0 else space_count
+        equal_count = space_count//(word_count-1) if word_count > 1 else 0
+        extra_count = space_count%(word_count-1) if word_count > 1 else space_count
         right, i = len(text)-1-extra_count, len(text)-1
         while i >= 0:
             has_word = False

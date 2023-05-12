@@ -16,7 +16,9 @@ class Solution(object):
             return s
         cnts = collections.Counter(s)
         bucket_cnt = max(cnts.itervalues())
-        if not ((bucket_cnt-1)*k+sum(x == bucket_cnt for x in cnts.itervalues()) <= len(s)):
+        if (bucket_cnt - 1) * k + sum(
+            x == bucket_cnt for x in cnts.itervalues()
+        ) > len(s):
             return ""
         result = [0]*len(s)
         i = (len(s)-1)%k
@@ -47,7 +49,10 @@ class Solution2(object):
             return s
         cnts = collections.Counter(s)
         bucket_cnt = (len(s)+k-1)//k
-        if not (max(cnts.itervalues()) <= bucket_cnt and cnts.values().count(bucket_cnt) <= (len(s)-1)%k+1):
+        if (
+            max(cnts.itervalues()) > bucket_cnt
+            or cnts.values().count(bucket_cnt) > (len(s) - 1) % k + 1
+        ):
             return ""
         result = [0]*len(s)
         i = 0

@@ -11,7 +11,7 @@ class Solution(object):
         """
         # Sort the points lexicographically (tuples are compared lexicographically).
         # Remove duplicates to detect the case we have just one unique point.
-        points = sorted(set(tuple(x) for x in points))
+        points = sorted({tuple(x) for x in points})
 
         # Boring case: no points or a single point, possibly repeated multiple times.
         if len(points) <= 1:

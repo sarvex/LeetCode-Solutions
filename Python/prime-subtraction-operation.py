@@ -28,9 +28,9 @@ class Solution(object):
         :rtype: bool
         """
         for i in xrange(len(nums)):
-            j = bisect.bisect_left(PRIMES, nums[i]-nums[i-1] if i-1 >= 0 else nums[i])
-            if j-1 >= 0:
+            j = bisect.bisect_left(PRIMES, nums[i]-nums[i-1] if i >= 1 else nums[i])
+            if j >= 1:
                 nums[i] -= PRIMES[j-1]
-            if i-1 >= 0 and nums[i-1] >=nums[i]:
+            if i >= 1 and nums[i - 1] >= nums[i]:
                 return False
         return True

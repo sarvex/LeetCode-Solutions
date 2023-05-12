@@ -175,9 +175,7 @@ class MajorityChecker3(object):
         :rtype: int
         """
         result = self.__segment_tree.query(left, right)
-        if result[1] >= threshold:
-            return result[0]
-        return -1
+        return result[0] if result[1] >= threshold else -1
 
 
 # Time:  ctor:  O(n)
@@ -212,14 +210,12 @@ class MajorityChecker4(object):
         """
         def count(inv_idx, m, left, right):
             return bisect.bisect_right(inv_idx[m], right) - \
-                   bisect.bisect_left(inv_idx[m], left)
+                       bisect.bisect_left(inv_idx[m], left)
 
         l, r = left//self.__bucket_size, right//self.__bucket_size;
         if l == r:
             m = self.__boyer_moore_majority_vote(self.__arr, left, right)
-            if count(self.__inv_idx, m, left, right) >= threshold:
-                return m
-            return -1
+            return m if count(self.__inv_idx, m, left, right) >= threshold else -1
         else:
             m = self.__boyer_moore_majority_vote(self.__arr, left, (l+1)*self.__bucket_size-1)
             if count(self.__inv_idx, m, left, right) >= threshold:

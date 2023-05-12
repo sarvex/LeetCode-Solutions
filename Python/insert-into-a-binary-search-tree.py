@@ -18,10 +18,7 @@ class Solution(object):
         curr, parent = root, None
         while curr:
             parent = curr
-            if val <= curr.val:
-                curr = curr.left
-            else:
-                curr = curr.right
+            curr = curr.left if val <= curr.val else curr.right
         if not parent:
             root = TreeNode(val)
         elif val <= parent.val:
@@ -42,10 +39,9 @@ class Solution2(object):
         """
         if not root:
             root = TreeNode(val)
+        elif val <= root.val:
+            root.left = self.insertIntoBST(root.left, val)
         else:
-            if val <= root.val:
-                root.left = self.insertIntoBST(root.left, val)
-            else:
-                root.right = self.insertIntoBST(root.right, val)
+            root.right = self.insertIntoBST(root.right, val)
         return root
 

@@ -11,15 +11,14 @@ class Solution(object):
         :type points: List[List[int]]
         :rtype: int
         """
-        nx = len(set(x for x, y in points))
-        ny = len(set(y for x, y in points))
+        nx = len({x for x, y in points})
+        ny = len({y for x, y in points})
 
         p = collections.defaultdict(list)
-        if nx > ny:
-            for x, y in points:
+        for x, y in points:
+            if nx > ny:
                 p[x].append(y)
-        else:
-            for x, y in points:
+            else:
                 p[y].append(x)
 
         lookup = {}

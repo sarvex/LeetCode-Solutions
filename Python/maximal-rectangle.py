@@ -58,7 +58,7 @@ class Solution2(object):
                     left = j + 1
 
             right = n
-            for j in reversed(xrange(n)):
+            for j in reversed(xrange(right)):
                 if matrix[i][j] == '1':
                     R[j] = min(R[j], right)
                     result = max(result, H[j] * (R[j] - L[j]))

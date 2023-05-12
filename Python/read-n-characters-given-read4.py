@@ -8,10 +8,7 @@ def read4(buf):
         buf[i] = file_content[i]
         i += 1
 
-    if len(file_content) > 4:
-        file_content = file_content[4:]
-    else:
-        file_content = ""
+    file_content = file_content[4:] if len(file_content) > 4 else ""
     return i
 
 class Solution(object):
@@ -23,7 +20,7 @@ class Solution(object):
         """
         read_bytes = 0
         buffer = [''] * 4
-        for i in xrange((n+4-1)//4):
+        for _ in xrange((n+4-1)//4):
             size = min(read4(buffer), n-read_bytes)
             buf[read_bytes:read_bytes+size] = buffer[:size]
             read_bytes += size

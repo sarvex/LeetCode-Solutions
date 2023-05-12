@@ -20,14 +20,12 @@ class Solution(object):
                     if c+2 != len(grid[0]) and grid[r][c+2] == 0:
                         next_q.append((r, c+1, is_vertical))
                     if r+1 != len(grid) and grid[r+1][c] == 0 and grid[r+1][c+1] == 0:
-                        next_q.append((r+1, c, is_vertical))
-                        next_q.append((r, c, not is_vertical))
+                        next_q.extend(((r+1, c, is_vertical), (r, c, not is_vertical)))
                 else:
                     if r+2 != len(grid) and grid[r+2][c] == 0:
                         next_q.append((r+1, c, is_vertical))
                     if c+1 != len(grid) and grid[r][c+1] == 0 and grid[r+1][c+1] == 0:
-                        next_q.append((r, c+1, is_vertical))
-                        next_q.append((r, c, not is_vertical))
+                        next_q.extend(((r, c+1, is_vertical), (r, c, not is_vertical)))
             q = next_q
             level += 1
         return -1

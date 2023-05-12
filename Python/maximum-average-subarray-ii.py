@@ -15,7 +15,7 @@ class Solution(object):
             for i in xrange(len(nums)):
                 accu[i+1] = nums[i] + accu[i] - avg
                 if i >= (k-1):
-                    if minval_pos == None or accu[i-k+1] < accu[minval_pos]:
+                    if minval_pos is None or accu[i - k + 1] < accu[minval_pos]:
                         minval_pos = i-k+1
                     if accu[i+1] - accu[minval_pos] >= 0:
                         delta = max(delta, (accu[i+1] - accu[minval_pos]) / (i+1 - minval_pos))

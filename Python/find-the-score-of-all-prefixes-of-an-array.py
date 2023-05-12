@@ -11,5 +11,5 @@ class Solution(object):
         curr = 0
         for i in xrange(len(nums)):
             curr = max(curr, nums[i])
-            nums[i] += (nums[i-1] if i-1 >= 0 else 0)+curr
+            nums[i] += (nums[i-1] if i >= 1 else 0) + curr
         return nums

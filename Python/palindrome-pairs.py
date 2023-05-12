@@ -61,10 +61,7 @@ class Solution_TLE(object):
             center, right = 0, 0
             for i in xrange(1, len(T) - 1):
                 i_mirror = 2 * center - i
-                if right > i:
-                    P[i] = min(right - i, P[i_mirror])
-                else:
-                    P[i] = 0
+                P[i] = min(right - i, P[i_mirror]) if right > i else 0
                 while T[i + 1 + P[i]] == T[i - 1 - P[i]]:
                     P[i] += 1
                 if i + P[i] > right:
@@ -101,7 +98,7 @@ class TrieNode(object):
     def insert(self, word, i):
         cur = self
         for c in word:
-            if not c in cur.leaves:
+            if c not in cur.leaves:
                 cur.leaves[c] = TrieNode()
             cur = cur.leaves[c]
         cur.word_idx = i

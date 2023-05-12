@@ -11,10 +11,7 @@ class Solution(object):
         :type bank: List[str]
         :rtype: int
         """
-        lookup = {}
-        for b in bank:
-            lookup[b] = False
-
+        lookup = {b: False for b in bank}
         q = deque([(start, 0)])
         while q:
             cur, level = q.popleft()

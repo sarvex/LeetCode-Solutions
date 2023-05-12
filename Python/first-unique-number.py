@@ -21,9 +21,7 @@ class FirstUnique(object):
         """
         :rtype: int
         """
-        if self.__q:
-            return next(iter(self.__q))
-        return -1
+        return next(iter(self.__q)) if self.__q else -1
     
     def add(self, value):
         """

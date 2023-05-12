@@ -44,6 +44,8 @@ class Solution_TLE(object):
         :type k: int
         :rtype: int
         """
+
+
         class BST(object):  # not avl, rbtree
             def __init__(self, val):
                 self.val = val
@@ -59,12 +61,11 @@ class Solution_TLE(object):
                         else:
                             curr.left = BST(val)
                             return
+                    elif curr.right:
+                        curr = curr.right
                     else:
-                        if curr.right:
-                            curr = curr.right
-                        else:
-                            curr.right = BST(val)
-                            return
+                        curr.right = BST(val)
+                        return
 
             def lower_bound(self, val):  # Time: O(h) = O(logn) ~ O(n)
                 result, curr = None, self
@@ -74,6 +75,7 @@ class Solution_TLE(object):
                     else:
                         curr = curr.right
                 return result
+
 
 
         if not matrix:
@@ -94,8 +96,7 @@ class Solution_TLE(object):
                 accu_sum = 0
                 for sum in sums:
                     accu_sum += sum
-                    node = accu_sum_set.lower_bound(accu_sum - k)
-                    if node:
+                    if node := accu_sum_set.lower_bound(accu_sum - k):
                         result = max(result, accu_sum - node.val)
                     accu_sum_set.insert(accu_sum)
 

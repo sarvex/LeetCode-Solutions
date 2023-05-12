@@ -14,11 +14,17 @@ class Solution(object):
 
             mask = 1
             for i in xrange(maxChoosableInteger):
-                if visited & mask == 0:
-                    if i + 1 >= desiredTotal or \
-                       not canIWinHelper(maxChoosableInteger, desiredTotal - (i + 1), visited | mask, lookup):
-                        lookup[visited] = True
-                        return True
+                if visited & mask == 0 and (
+                    i + 1 >= desiredTotal
+                    or not canIWinHelper(
+                        maxChoosableInteger,
+                        desiredTotal - (i + 1),
+                        visited | mask,
+                        lookup,
+                    )
+                ):
+                    lookup[visited] = True
+                    return True
                 mask <<= 1
             lookup[visited] = False
             return False

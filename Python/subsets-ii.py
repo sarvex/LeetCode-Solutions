@@ -34,10 +34,7 @@ class Solution2(object):
         nums.sort()
 
         while i < count:
-            cur = []
-            for j in xrange(len(nums)):
-                if i & 1 << j:
-                    cur.append(nums[j])
+            cur = [nums[j] for j in xrange(len(nums)) if i & 1 << j]
             if cur not in result:
                 result.append(cur)
             i += 1
@@ -58,11 +55,11 @@ class Solution3(object):
         return result
 
     def subsetsWithDupRecu(self, result, cur, nums):
-        if not nums:
-            if cur not in result:
-                result.append(cur)
-        else:
+        if nums:
             self.subsetsWithDupRecu(result, cur, nums[1:])
             self.subsetsWithDupRecu(result, cur + [nums[0]], nums[1:])
+
+        elif cur not in result:
+            result.append(cur)
 
 

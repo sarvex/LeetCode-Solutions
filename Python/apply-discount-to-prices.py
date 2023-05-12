@@ -18,8 +18,7 @@ class Solution(object):
                 cnt = reduce(lambda x, y: x*10+int(y), (sentence[k] for k in xrange(i+1, j)), 0)
                 result.append("${:d}.{:02d}".format(*divmod(cnt*(100-discount), 100)))
             else:
-                for k in xrange(i, j):
-                    result.append(sentence[k])
+                result.extend(sentence[k] for k in xrange(i, j))
             if j != len(sentence):
                 result.append(' ')
             i = j+1

@@ -24,7 +24,7 @@ class Solution(object):
                         continue
                     stk.append((v, u))
             return result
-        
+
         def iter_dfs2(curr):
             result = 0
             stk = [(0, -1, curr)]
@@ -45,7 +45,7 @@ class Solution(object):
         for u, v in edges:
             adj[u].append(v)
             adj[v].append(u)
-        lookup = {(u, v) for u, v in guesses}
+        lookup = set(guesses)
         curr = iter_dfs()
         return iter_dfs2(curr)
 
@@ -71,7 +71,7 @@ class Solution2(object):
                     continue
                 cnt += dfs(v, u)
             return cnt
-        
+
         def dfs2(u, p, curr):
             if (p, u) in lookup:
                 curr -= 1
@@ -88,7 +88,7 @@ class Solution2(object):
         for u, v in edges:
             adj[u].append(v)
             adj[v].append(u)
-        lookup = {(u, v) for u, v in guesses}
+        lookup = set(guesses)
         curr = dfs(0, -1)
         return dfs2(0, -1, curr)
 
@@ -122,6 +122,6 @@ class Solution3(object):
         for u, v in edges:
             adj[u].append(v)
             adj[v].append(u)
-        lookup = {(u, v) for u, v in guesses}
+        lookup = set(guesses)
         memo = {}
         return sum(memoization(i, -1) >= k for i in adj.iterkeys())

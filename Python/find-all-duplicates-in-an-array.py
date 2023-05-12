@@ -24,7 +24,6 @@ class Solution2(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        result = []
         i = 0
         while i < len(nums):
             if nums[i] != nums[nums[i]-1]:
@@ -32,10 +31,7 @@ class Solution2(object):
             else:
                 i += 1
 
-        for i in xrange(len(nums)):
-            if i != nums[i]-1:
-                result.append(nums[i])
-        return result
+        return [nums[i] for i in xrange(len(nums)) if i != nums[i]-1]
 
 
 # Time:  O(n)

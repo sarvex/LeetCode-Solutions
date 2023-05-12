@@ -17,7 +17,7 @@ class Solution(object):
         if goal < mn:
             return mn-goal
         result = abs(goal)
-        sums1 = set([0])
+        sums1 = {0}
         for i in xrange(len(nums)//2):
             for x in list(sums1):
                 if x+nums[i] in sums1:
@@ -25,7 +25,7 @@ class Solution(object):
                 sums1.add(x+nums[i])
                 result = min(result, abs(goal-x-nums[i]))  # case of right half part is 0
         sorted_sums1 = sorted(sums1)  # Time: O((n/2) * 2^(n/2)) = O(n * 2^(n/2)), Space: O(2^(n/2))
-        sums2 = set([0])
+        sums2 = {0}
         for i in xrange(len(nums)//2, len(nums)):
             for x in list(sums2):
                 if x+nums[i] in sums2:

@@ -150,9 +150,9 @@ class Solution2(object):
                     if i == 0 or not s[i-1].isalnum():
                         operands.append(Poly(operand[::-1]))
                         operand = ""
-                elif s[i] == ')' or s[i] == '*':
+                elif s[i] in [')', '*']:
                     operators.append(s[i])
-                elif s[i] == '+' or s[i] == '-':
+                elif s[i] in ['+', '-']:
                     while operators and operators[-1] == '*':
                         compute(operands, operators)
                     operators.append(s[i])

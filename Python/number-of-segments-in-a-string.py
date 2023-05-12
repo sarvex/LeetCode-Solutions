@@ -7,11 +7,9 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        result = int(len(s) and s[-1] != ' ')
-        for i in xrange(1, len(s)):
-            if s[i] == ' ' and s[i-1] != ' ':
-                result += 1
-        return result
+        return int(len(s) and s[-1] != ' ') + sum(
+            1 for i in xrange(1, len(s)) if s[i] == ' ' and s[i - 1] != ' '
+        )
 
     def countSegments2(self, s):
         """

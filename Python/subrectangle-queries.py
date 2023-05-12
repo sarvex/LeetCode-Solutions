@@ -30,10 +30,14 @@ class SubrectangleQueries(object):
         :type col: int
         :rtype: int
         """
-        for (row1, col1, row2, col2, newValue) in reversed(self.__updates):
-            if row1 <= row <= row2 and col1 <= col <= col2:
-                return newValue
-        return self.__rectangle[row][col]
+        return next(
+            (
+                newValue
+                for row1, col1, row2, col2, newValue in reversed(self.__updates)
+                if row1 <= row <= row2 and col1 <= col <= col2
+            ),
+            self.__rectangle[row][col],
+        )
 
 
 # Time:  ctor:   O(1)

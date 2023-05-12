@@ -57,13 +57,11 @@ class AhoTrie(object):
         result = []
         if node not in self.__lookup:  # modified
             self.__lookup.add(node)  # modified
-            for i in node.indices:
-                result.append(i)
+            result.extend(iter(node.indices))
             output = node.output
             while output and output not in self.__lookup:  # modified
                 self.__lookup.add(output)  # modified
-                for i in output.indices:
-                    result.append(i)
+                result.extend(iter(output.indices))
                 output = output.output
         return result
 

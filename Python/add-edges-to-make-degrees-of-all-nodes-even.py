@@ -14,7 +14,7 @@ class Solution(object):
             adj[u-1].add(v-1)
             adj[v-1].add(u-1)
         odds = [u for u in xrange(n) if len(adj[u])%2]
-        if len(odds) == 0:
+        if not odds:
             return True
         if len(odds) == 2:
             return any(odds[0] not in adj[u] and odds[1] not in adj[u] for u in range(n))

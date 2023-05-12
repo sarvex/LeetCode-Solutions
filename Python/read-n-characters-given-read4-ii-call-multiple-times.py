@@ -8,10 +8,7 @@ def read4(buf):
         buf[i] = file_content[i]
         i += 1
 
-    if len(file_content) > 4:
-        file_content = file_content[4:]
-    else:
-        file_content = ""
+    file_content = file_content[4:] if len(file_content) > 4 else ""
     return i
 
 # The read4 API is already defined for you.

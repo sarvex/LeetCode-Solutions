@@ -57,8 +57,7 @@ class LockingTree(object):
             if node in self.__locked:
                 del self.__locked[node]
                 result = True
-            for child in self.__children[node]:
-                stk.append(child)
+            stk.extend(iter(self.__children[node]))
         if result:
             self.__locked[num] = user
         return result

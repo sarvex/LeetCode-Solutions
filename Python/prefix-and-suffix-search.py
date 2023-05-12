@@ -30,7 +30,7 @@ class WordFilter(object):
         :rtype: int
         """
         cur = self.__trie
-        for letter in suffix + '#' + prefix:
+        for letter in f'{suffix}#{prefix}':
             if letter not in cur:
                 return -1
             cur = cur[letter]

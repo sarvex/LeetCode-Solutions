@@ -40,9 +40,9 @@ class Solution(object):
 
         N, L = len(A), len(A[0])
         union_find = UnionFind(N)
-        if N < L*L:
+        if N < L**2:
             for (i1, word1), (i2, word2) in \
-                    itertools.combinations(enumerate(A), 2):
+                        itertools.combinations(enumerate(A), 2):
                 if isSimilar(word1, word2):
                     union_find.union_set(i1, i2)
         else:

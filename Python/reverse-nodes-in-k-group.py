@@ -8,7 +8,7 @@ class ListNode(object):
 
     def __repr__(self):
         if self:
-            return "{} -> {}".format(self.val, repr(self.next))
+            return f"{self.val} -> {repr(self.next)}"
 
 class Solution(object):
     # @param head, a ListNode

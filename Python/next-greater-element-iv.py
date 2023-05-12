@@ -16,6 +16,5 @@ class Solution(object):
             while stk1 and nums[stk1[-1]] < x:
                 tmp.append(stk1.pop())
             stk1.append(i)
-            for x in reversed(tmp):
-                stk2.append(x)
+            stk2.extend(iter(reversed(tmp)))
         return result

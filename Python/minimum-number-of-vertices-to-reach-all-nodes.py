@@ -8,11 +8,5 @@ class Solution(object):
         :type edges: List[List[int]]
         :rtype: List[int]
         """
-        result = []
-        lookup = set()
-        for u, v in edges:
-            lookup.add(v)
-        for i in xrange(n):
-            if i not in lookup:
-                result.append(i)
-        return result
+        lookup = {v for u, v in edges}
+        return [i for i in xrange(n) if i not in lookup]

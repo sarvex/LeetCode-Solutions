@@ -9,14 +9,22 @@ class Solution(object):
         :rtype: int
         """
         def RabinKarp(arr, x):  # double hashing
-            hashes = tuple([reduce(lambda h,x: (h*p+x)%MOD, (arr[i] for i in xrange(x)), 0) for p in P])
+            hashes = tuple(
+                reduce(
+                    lambda h, x: (h * p + x) % MOD, (arr[i] for i in xrange(x)), 0
+                )
+                for p in P
+            )
             powers = [pow(p, x, MOD) for p in P]
             lookup = {hashes}
             for i in xrange(x, len(arr)):
-                hashes = tuple([(hashes[j]*P[j] - arr[i-x]*powers[j] + arr[i])%MOD for j in xrange(len(P))])  # in smaller datasets, tuple from list is much faster than tuple from generator, see https://stackoverflow.com/questions/16940293/why-is-there-no-tuple-comprehension-in-python
+                hashes = tuple(
+                    (hashes[j] * P[j] - arr[i - x] * powers[j] + arr[i]) % MOD
+                    for j in xrange(len(P))
+                )
                 lookup.add(hashes)
             return lookup
-        
+
         def check(paths, x):
             intersect = RabinKarp(paths[0], x)
             for i in xrange(1, len(paths)):

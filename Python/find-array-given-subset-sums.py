@@ -107,7 +107,7 @@ class Solution3(object):
         :type sums: List[int]
         :rtype: List[int]
         """
-        dp = {k: v for k, v in collections.Counter(sums).iteritems()}
+        dp = dict(collections.Counter(sums).iteritems())
         total = reduce(operator.ior, dp.itervalues(), 0)
         basis = total&-total  # find rightmost bit 1
         if basis > 1:
@@ -150,7 +150,7 @@ class Solution4(object):
         :type sums: List[int]
         :rtype: List[int]
         """
-        dp = {k: v for k, v in collections.Counter(sums).iteritems()}
+        dp = dict(collections.Counter(sums).iteritems())
         sorted_sums = sorted(dp.iterkeys())  # Time: O(2^n * log(2^n)) = O(n * 2^n)
         shift = 0
         result = []

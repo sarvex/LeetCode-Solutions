@@ -20,7 +20,7 @@ class Solution(object):
                 if sticker_count[target[0]] == 0:
                     continue
                 new_target = []
-                for k in target_count.keys():
+                for k in target_count:
                     if target_count[k] > sticker_count[k]:
                        new_target += [k]*(target_count[k] - sticker_count[k])
                 if len(new_target) != len(target):

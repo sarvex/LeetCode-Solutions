@@ -5,7 +5,7 @@ class Solution(object):
     # @param s, a string
     # @return an integer
     def minCut(self, s):
-        lookup = [[False for j in xrange(len(s))] for i in xrange(len(s))]
+        lookup = [[False for _ in xrange(len(s))] for _ in xrange(len(s))]
         mincut = [len(s) - 1 - i for i in xrange(len(s) + 1)]
 
         for i in reversed(xrange(len(s))):

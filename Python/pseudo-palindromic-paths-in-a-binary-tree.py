@@ -10,7 +10,7 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def pseudoPalindromicPaths (self, root):
+    def pseudoPalindromicPaths(self, root):
         """
         :type root: TreeNode
         :rtype: int
@@ -23,8 +23,7 @@ class Solution(object):
                 continue
             count ^= 1 << (node.val-1)
             result += int(node.left == node.right and count&(count-1) == 0)
-            stk.append((node.right, count))
-            stk.append((node.left, count))
+            stk.extend(((node.right, count), (node.left, count)))
         return result
     
 

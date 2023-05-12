@@ -46,11 +46,11 @@ class Solution(object):
         for i in reversed(xrange(1, len(removeQueries))): 
             q = removeQueries[i]
             lookup[q] = 1
-            if q-1 >= 0 and lookup[q-1]:
+            if q >= 1 and lookup[q - 1]:
                 uf.union_set(q-1, q)
             if q+1 < len(nums) and lookup[q+1]:
                 uf.union_set(q, q+1)
-            result[i-1] = max(result[i], uf.total(q))   
+            result[i-1] = max(result[i], uf.total(q))
         return result
 
 

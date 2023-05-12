@@ -75,8 +75,6 @@ class FileSystem(object):
 
 
     def __split(self, path, delim):
-        if path == '/':
-            return []
-        return path.split('/')[1:]
+        return [] if path == '/' else path.split('/')[1:]
 
 

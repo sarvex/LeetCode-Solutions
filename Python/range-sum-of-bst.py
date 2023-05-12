@@ -20,8 +20,7 @@ class Solution(object):
         result = 0
         s = [root]
         while s:
-            node = s.pop()
-            if node:
+            if node := s.pop():
                 if L <= node.val <= R:
                     result += node.val
                 if L < node.val:

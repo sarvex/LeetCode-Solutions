@@ -14,8 +14,5 @@ class Solution(object):
         lookup = collections.defaultdict(collections.deque)
         for i, n in enumerate(B):
             lookup[n].append(i)
-        result = []
-        for n in A:
-            result.append(lookup[n].popleft())
-        return result
+        return [lookup[n].popleft() for n in A]
 

@@ -28,8 +28,11 @@ class Solution2(object):
         """
         q = nums[:]
         while len(q) != 1:
-            new_q = []
-            for i in xrange(len(q)//2):
-                new_q.append(min(q[2*i], q[2*i+1]) if i%2 == 0 else max(q[2*i], q[2*i+1]))
+            new_q = [
+                min(q[2 * i], q[2 * i + 1])
+                if i % 2 == 0
+                else max(q[2 * i], q[2 * i + 1])
+                for i in xrange(len(q) // 2)
+            ]
             q = new_q
         return q[0]

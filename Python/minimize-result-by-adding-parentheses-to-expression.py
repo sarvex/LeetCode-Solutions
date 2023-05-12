@@ -50,7 +50,7 @@ class Solution2(object):
         best = None
         min_val = float("inf")
         pos = expression.index('+')
-        left, right = int(expression[0:pos]), int(expression[pos+1:])  # Space: O(n)
+        left, right = int(expression[:pos]), int(expression[pos+1:])
         base1, base2_init = 10**pos, 10**(len(expression)-(pos+1)-1)
         for i in xrange(pos):
             base2 = base2_init

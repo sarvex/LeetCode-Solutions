@@ -11,7 +11,7 @@ class Solution(object):
         prev = -1
         result = ""
         for i in xrange(len(s)+1):
-            if not (i == len(s) or s[i] not in lookup or s[i].swapcase() not in lookup):
+            if i != len(s) and s[i] in lookup and s[i].swapcase() in lookup:
                 continue
             if prev == -1 and i == len(s):
                 return s

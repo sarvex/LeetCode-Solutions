@@ -18,12 +18,10 @@ class Solution(object):
                     result.append("".join(curr))
                 if left < right:
                     stk.append((3, tuple()))
-                    stk.append((1, (left, right-1)))
-                    stk.append((2, (')')))
+                    stk.extend(((1, (left, right-1)), (2, ')')))
                 if left > 0:
                     stk.append((3, tuple()))
-                    stk.append((1, (left-1, right)))
-                    stk.append((2, ('(')))
+                    stk.extend(((1, (left-1, right)), (2, '(')))
             elif step == 2:
                 curr.append(args[0])
             elif step == 3:

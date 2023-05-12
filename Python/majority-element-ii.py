@@ -33,13 +33,7 @@ class Solution(object):
             if i in cnts:
                 cnts[i] += 1
 
-        # Selects the integer which occurs > [n / k] times.
-        result = []
-        for i in cnts.keys():
-            if cnts[i] > n / k:
-                result.append(i)
-
-        return result
+        return [i for i in cnts.keys() if cnts[i] > n / k]
 
     def majorityElement2(self, nums):
         """

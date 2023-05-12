@@ -89,7 +89,7 @@ class Solution2(object):
         d = 0
         result = [-1]*n
         result[p] = d
-        sl = [SortedList(i for i in xrange(0, n, 2)), SortedList(i for i in xrange(1, n, 2))]
+        sl = [SortedList(iter(xrange(0, n, 2))), SortedList(iter(xrange(1, n, 2)))]
         sl[p%2].remove(p)
         q = [p]
         d += 1

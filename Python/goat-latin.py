@@ -15,6 +15,7 @@ class Solution(object):
             for i, word in enumerate(S.split(), 1):
                 if word[0] not in vowel:
                     word = word[1:] + word[:1]
-                yield word + 'ma' + 'a'*i
+                yield f'{word}ma' + 'a'*i
+
         return " ".join(convert(S))
 

@@ -18,10 +18,7 @@ class Solution(object):
             root ^= id(node)
             for child in node.children:
                 root ^= id(child)
-        for node in tree:
-            if id(node) == root:
-                return node
-        return None
+        return next((node for node in tree if id(node) == root), None)
 
 
 class Solution2(object):
@@ -35,10 +32,7 @@ class Solution2(object):
             root ^= node.val
             for child in node.children:
                 root ^= child.val
-        for node in tree:
-            if node.val == root:
-                return node
-        return None
+        return next((node for node in tree if node.val == root), None)
 
 
 class Solution3(object):
@@ -47,10 +41,5 @@ class Solution3(object):
         :type tree: List['Node']
         :rtype: 'Node'
         """
-        root = 0
-        for node in tree:
-            root += node.val-sum(child.val for child in node.children)
-        for node in tree:
-            if node.val == root:
-                return node
-        return None
+        root = sum(node.val-sum(child.val for child in node.children) for node in tree)
+        return next((node for node in tree if node.val == root), None)

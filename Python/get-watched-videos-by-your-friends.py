@@ -13,9 +13,9 @@ class Solution(object):
         :type level: int
         :rtype: List[str]
         """
-        curr_level, lookup = set([id]), set([id])
+        curr_level, lookup = {id}, {id}
         for _ in xrange(level):
-            curr_level = set(j for i in curr_level for j in friends[i] if j not in lookup)
+            curr_level = {j for i in curr_level for j in friends[i] if j not in lookup}
             lookup |= curr_level
         count = collections.Counter([v for i in curr_level for v in watchedVideos[i]])
         return sorted(count.keys(), key=lambda x: (count[x], x))

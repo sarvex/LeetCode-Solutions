@@ -37,7 +37,9 @@ class Solution2(object):
         :type s2: str
         :rtype: bool
         """
-        return not {1, -1}.issubset(set(cmp(a, b) for a, b in itertools.izip(sorted(s1), sorted(s2))))
+        return not {1, -1}.issubset(
+            {cmp(a, b) for a, b in itertools.izip(sorted(s1), sorted(s2))}
+        )
 
 
 # Time:  O(nlogn)

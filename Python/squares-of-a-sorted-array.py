@@ -13,9 +13,8 @@ class Solution(object):
         right = bisect.bisect_left(A, 0)
         left = right-1
         result = []
-        while 0 <= left or right < len(A):
-            if right == len(A) or \
-               (0 <= left and A[left]**2 < A[right]**2):
+        while left >= 0 or right < len(A):
+            if right == len(A) or left >= 0 and A[left] ** 2 < A[right] ** 2:
                 result.append(A[left]**2)
                 left -= 1
             else:

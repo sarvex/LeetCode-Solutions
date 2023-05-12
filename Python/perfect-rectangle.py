@@ -21,10 +21,9 @@ class Solution(object):
                     return False
                 points[p] |= q
 
-        for px, py in points:
-            if left < px < right or bottom < py < top:
-                if points[(px, py)] not in (3, 5, 10, 12, 15):
-                    return False
-
-        return True
+        return not any(
+            (left < px < right or bottom < py < top)
+            and points[(px, py)] not in (3, 5, 10, 12, 15)
+            for px, py in points
+        )
 

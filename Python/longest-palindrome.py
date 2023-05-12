@@ -10,9 +10,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        odds = 0
-        for k, v in collections.Counter(s).iteritems():
-            odds += v & 1
+        odds = sum(v & 1 for k, v in collections.Counter(s).iteritems())
         return len(s) - odds + int(odds > 0)
 
     def longestPalindrome2(self, s):

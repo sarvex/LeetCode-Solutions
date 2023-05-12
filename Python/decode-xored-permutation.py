@@ -13,6 +13,5 @@ class Solution(object):
             if i < len(encoded) and i%2 == 1:
                 curr ^= encoded[i]
         result = [curr]
-        for x in encoded:
-            result.append(result[-1]^x)
+        result.extend(result[-1]^x for x in encoded)
         return result

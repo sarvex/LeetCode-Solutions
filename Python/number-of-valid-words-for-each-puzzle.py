@@ -53,10 +53,8 @@ class Solution2(object):
         L = 7
         lookup = collections.defaultdict(list)
         for i in xrange(len(puzzles)):
-            bits = []
             base = 1 << (ord(puzzles[i][0])-ord('a'))
-            for j in xrange(1, L):
-                bits.append(ord(puzzles[i][j])-ord('a'))
+            bits = [ord(puzzles[i][j])-ord('a') for j in xrange(1, L)]
             for k in xrange(2**len(bits)):
                 bitset = base
                 for j in xrange(len(bits)):

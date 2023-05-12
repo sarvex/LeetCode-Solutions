@@ -27,13 +27,13 @@ class Solution2(object):
     # @return {integer}
     def minSubArrayLen(self, s, nums):
         min_size = float("inf")
-        sum_from_start = [n for n in nums]
+        sum_from_start = list(nums)
         for i in xrange(len(sum_from_start) - 1):
             sum_from_start[i + 1] += sum_from_start[i]
         for i in xrange(len(sum_from_start)):
             end = self.binarySearch(lambda x, y: x <= y, sum_from_start, \
-                                    i, len(sum_from_start), \
-                                    sum_from_start[i] - nums[i] + s)
+                                        i, len(sum_from_start), \
+                                        sum_from_start[i] - nums[i] + s)
             if end < len(sum_from_start):
                 min_size = min(min_size, end - i + 1)
 

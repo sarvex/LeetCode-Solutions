@@ -42,7 +42,7 @@ class Solution2(object):
         """
         _trie = lambda: collections.defaultdict(_trie)
         trie = _trie()
-        for i, word in enumerate(words):
+        for word in words:
             functools.reduce(dict.__getitem__, word, trie).setdefault("_end")
 
         lookup = [False] * len(s)

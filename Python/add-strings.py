@@ -37,10 +37,7 @@ class Solution(object):
         for index, num in enumerate(num1):
             tmp = str(int(num) + int(num2[index]) + plus)
             res += tmp[-1]
-            if int(tmp) > 9:
-                plus = 1
-            else:
-                plus = 0
+            plus = 1 if int(tmp) > 9 else 0
         if plus:
             res += '1'
         return res[::-1]

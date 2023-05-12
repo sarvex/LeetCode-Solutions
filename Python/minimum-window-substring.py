@@ -35,8 +35,8 @@ class Solution2(object):
         :type t: str
         :rtype: str
         """
-        current_count = [0 for i in xrange(52)]
-        expected_count = [0 for i in xrange(52)]
+        current_count = [0 for _ in xrange(52)]
+        expected_count = [0 for _ in xrange(52)]
 
         for char in t:
             expected_count[ord(char) - ord('a')] += 1
@@ -49,7 +49,7 @@ class Solution2(object):
 
             if count == len(t):
                 while expected_count[ord(s[start]) - ord('a')] == 0 or \
-                      current_count[ord(s[start]) - ord('a')] > expected_count[ord(s[start]) - ord('a')]:
+                          current_count[ord(s[start]) - ord('a')] > expected_count[ord(s[start]) - ord('a')]:
                     current_count[ord(s[start]) - ord('a')] -= 1
                     start += 1
 
@@ -58,9 +58,6 @@ class Solution2(object):
                     min_start = start
             i += 1
 
-        if min_width == float("inf"):
-            return ""
-
-        return s[min_start:min_start + min_width]
+        return "" if min_width == float("inf") else s[min_start:min_start + min_width]
 
 

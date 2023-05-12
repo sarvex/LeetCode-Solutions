@@ -7,7 +7,7 @@ class Solution(object):
         :type rooms: List[List[int]]
         :rtype: bool
         """
-        lookup = set([0])
+        lookup = {0}
         stack = [0]
         while stack:
             node = stack.pop()

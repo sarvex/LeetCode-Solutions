@@ -24,9 +24,8 @@ class Solution(object):
                 if is_odd:
                     if node.val%2 or (prev and prev.val <= node.val):
                         return False
-                else:
-                    if not node.val%2 or (prev and prev.val >= node.val):
-                        return False
+                elif not node.val%2 or (prev and prev.val >= node.val):
+                    return False
                 if node.left:
                     new_q.append(node.left)
                 if node.right:

@@ -9,8 +9,7 @@ class Solution(object):
         """
         MOD = 10**9+7
         directions = [[1, 0], [0, 1], [1, 1]]
-        dp = [[[0, 0] for r in xrange(len(board[0])+1)]
-              for r in xrange(2)]
+        dp = [[[0, 0] for _ in xrange(len(board[0])+1)] for _ in xrange(2)]
         dp[(len(board)-1)%2][len(board[0])-1] = [0, 1]
         for r in reversed(xrange(len(board))):
             for c in reversed(xrange(len(board[0]))):

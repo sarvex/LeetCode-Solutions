@@ -28,11 +28,11 @@ class Solution(object):
                     if node == target:
                         return 1.0/choices
                     continue
-                for child in G[node]:
-                    if child == parent:
-                        continue
-                    new_stk.append((t-1, child, node,
-                                    choices*(len(G[node])-(parent != 0))))
+                new_stk.extend(
+                    (t - 1, child, node, choices * (len(G[node]) - (parent != 0)))
+                    for child in G[node]
+                    if child != parent
+                )
             stk = new_stk
         return 0.0
 

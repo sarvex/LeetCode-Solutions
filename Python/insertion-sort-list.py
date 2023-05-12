@@ -7,10 +7,7 @@ class ListNode(object):
         self.next = None
 
     def __repr__(self):
-        if self:
-            return "{} -> {}".format(self.val, repr(self.next))
-        else:
-            return "Nil"
+        return f"{self.val} -> {repr(self.next)}" if self else "Nil"
 
 class Solution(object):
     # @param head, a ListNode

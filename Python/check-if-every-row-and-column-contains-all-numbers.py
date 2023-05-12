@@ -7,7 +7,10 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: bool
         """
-        return all(len(set(row)) == len(matrix) for row in matrix) and all(len(set(matrix[i][j] for i in xrange(len(matrix)))) == len(matrix) for j in xrange(len(matrix[0])))
+        return all(len(set(row)) == len(matrix) for row in matrix) and all(
+            len({matrix[i][j] for i in xrange(len(matrix))}) == len(matrix)
+            for j in xrange(len(matrix[0]))
+        )
 
 
 # Time:  O(n^2)

@@ -34,9 +34,6 @@ class Solution2(object):
         if n == 0:
             return 1
         v = self.myPow(x, n / 2)
-        if n % 2 == 0:
-            return v * v
-        else:
-            return v * v * x
+        return v * v if n % 2 == 0 else v * v * x
 
 

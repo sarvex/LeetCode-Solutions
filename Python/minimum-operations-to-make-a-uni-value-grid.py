@@ -37,7 +37,7 @@ class Solution(object):
                     left = pivot_right+1
 
         nums = [v for row in grid for v in row]
-        if len(set(v%x for v in nums)) > 1:
+        if len({v % x for v in nums}) > 1:
             return -1
         nth_element(nums, len(nums)//2)
         median = nums[len(nums)//2]

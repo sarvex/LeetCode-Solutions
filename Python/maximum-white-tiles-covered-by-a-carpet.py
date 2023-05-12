@@ -12,7 +12,7 @@ class Solution(object):
         tiles.sort()
         result = right = gap = 0
         for left, (l, _) in enumerate(tiles):
-            if left-1 >= 0:
+            if left >= 1:
                 gap -= tiles[left][0]-tiles[left-1][1]-1
             r = l+carpetLen-1
             while right+1 < len(tiles) and r+1 >= tiles[right+1][0]:
@@ -35,7 +35,7 @@ class Solution2(object):
         tiles.sort()
         result = left = gap = 0
         for right in xrange(len(tiles)):
-            if right-1 >= 0:
+            if right >= 1:
                 gap += tiles[right][0]-tiles[right-1][1]-1
             l = tiles[right][1]-carpetLen+1
             while not (tiles[left][1]+1 >= l):
@@ -92,7 +92,7 @@ class Solution4(object):
         for right, (_, r) in enumerate(tiles):
             l = r-carpetLen+1
             left = bisect.bisect_right(tiles, [l])
-            if left-1 >= 0 and tiles[left-1][1]+1 >= l:
+            if left >= 1 and tiles[left - 1][1] + 1 >= l:
                 left -= 1
             extra = max(l-tiles[left][0], 0)
             result = max(result, (prefix[right+1]-prefix[left])-extra)

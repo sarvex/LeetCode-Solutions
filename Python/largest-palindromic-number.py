@@ -16,9 +16,7 @@ class Solution(object):
         for i in reversed(xrange(10)):
             if not cnt[str(i)]//2 or (i == 0 and not result):
                 continue
-            for _ in xrange(cnt[str(i)]//2):
-                result.append(str(i))
+            result.extend(str(i) for _ in xrange(cnt[str(i)]//2))
         result.append(max([k for k, v in cnt.iteritems() if v%2] or [""]))
-        for i in reversed(xrange(len(result)-1)):
-            result.append(result[i])
+        result.extend(result[i] for i in reversed(xrange(len(result)-1)))
         return "".join(result) or "0"

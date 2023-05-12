@@ -11,9 +11,7 @@ class Solution(object):
 
         for i in reversed(xrange(max(nums).bit_length())):
             result <<= 1
-            prefixes = set()
-            for n in nums:
-                prefixes.add(n >> i)
+            prefixes = {n >> i for n in nums}
             for p in prefixes:
                 if (result | 1) ^ p in prefixes:
                     result |= 1

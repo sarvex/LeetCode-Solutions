@@ -53,8 +53,7 @@ class Solution2(object):
             if is_visited:
                 result.append(root.val)
             else:
-                stack.append((root.right, False))
-                stack.append((root.left, False))
+                stack.extend(((root.right, False), (root.left, False)))
                 stack.append((root, True))
         return result
 

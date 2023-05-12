@@ -28,10 +28,7 @@ class Solution2(object):
         :rtype: int
         """
         nums.sort()
-        result = 0
-        for i in xrange(0, len(nums), 2):
-            result += nums[i]
-        return result
+        return sum(nums[i] for i in xrange(0, len(nums), 2))
 
 
 # Time:  O(nlogn)
@@ -43,5 +40,5 @@ class Solution3(object):
         :rtype: int
         """
         nums = sorted(nums)
-        return sum([nums[i] for i in range(0, len(nums), 2)])
+        return sum(nums[i] for i in range(0, len(nums), 2))
 

@@ -39,6 +39,6 @@ class Solution2(object):
     """
     def climbStairs(self, n):
         prev, current = 0, 1
-        for i in xrange(n):
+        for _ in xrange(n):
             prev, current = current, prev + current,
         return current

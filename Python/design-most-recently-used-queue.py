@@ -54,7 +54,7 @@ class BIT(object):  # 0-indexed.
         floor_log2_n = (len(self.__bit)-1).bit_length()-1
         pow_i = 2**floor_log2_n
         total = pos = 0  # 1-indexed
-        for i in reversed(xrange(floor_log2_n+1)):  # O(logN)
+        for _ in reversed(xrange(floor_log2_n+1)):
             if pos+pow_i < len(self.__bit) and not (total+self.__bit[pos+pow_i] >= k):
                 total += self.__bit[pos+pow_i]
                 pos += pow_i

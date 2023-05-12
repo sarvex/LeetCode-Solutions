@@ -23,8 +23,6 @@ class Solution(object):
             i[0] += 1
             if op == '&':
                 return all(stk)
-            if op == '|':
-                return any(stk)
-            return not stk[0]
+            return any(stk) if op == '|' else not stk[0]
 
         return parse(expression, [0])

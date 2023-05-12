@@ -8,13 +8,13 @@ class Solution(object):
         :type obstacles: List[int]
         :rtype: int
         """
-        result, lanes = 0, set([2])
+        result, lanes = 0, {2}
         for i in xrange(len(obstacles)-1):
             lanes.discard(obstacles[i+1])
             if lanes:
                 continue
             result += 1
-            lanes = set(j for j in xrange(1, 4) if j not in [obstacles[i], obstacles[i+1]])
+            lanes = {j for j in xrange(1, 4) if j not in [obstacles[i], obstacles[i+1]]}
         return result
 
         

@@ -23,6 +23,4 @@ class FileSystem(object):
         :type path: str
         :rtype: int
         """
-        if path not in self.__lookup:
-            return -1
-        return self.__lookup[path]
+        return -1 if path not in self.__lookup else self.__lookup[path]

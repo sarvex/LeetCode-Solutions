@@ -62,9 +62,10 @@ class DetectSquares2(object):
         :type point: List[int]
         :rtype: int
         """
-        result = 0
-        for x, y in self.__points:
-            if not (point[0] != x and point[1] != y and (abs(point[0]-x) == abs(point[1]-y))):
-                continue
-            result += self.__point_counts[(point[0], y)]*self.__point_counts[(x, point[1])]
-        return result
+        return sum(
+            self.__point_counts[(point[0], y)] * self.__point_counts[(x, point[1])]
+            for x, y in self.__points
+            if point[0] != x
+            and point[1] != y
+            and abs(point[0] - x) == abs(point[1] - y)
+        )

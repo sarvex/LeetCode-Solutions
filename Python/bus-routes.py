@@ -22,7 +22,7 @@ class Solution(object):
 
         result = 1
         q = [S]
-        lookup = set([S])
+        lookup = {S}
         while q:
             next_q = []
             for stop in q:

@@ -19,6 +19,6 @@ class Solution(object):
             if i-k >= 0:
                 sl.remove(nums[i-k])
             sl.add(v)
-            if i-k+1 >= 0:
+            if i - k >= -1:
                 result.append(min(sl[x-1], 0))
         return result 

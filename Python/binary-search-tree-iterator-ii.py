@@ -41,7 +41,7 @@ class BSTIterator(object):
         """
         :rtype: bool
         """
-        return self.__pos-1 >= 0
+        return self.__pos >= 1
 
     def prev(self):
         """

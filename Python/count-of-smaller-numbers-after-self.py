@@ -118,12 +118,11 @@ class Solution3(object):
                     else:
                         curr.left = node
                         break
-                else:  # Insert right if larger or equal.
-                    if curr.right:
-                        curr = curr.right
-                    else:
-                        curr.right = node
-                        break
+                elif curr.right:
+                    curr = curr.right
+                else:
+                    curr.right = node
+                    break
 
         # Query the smaller count of the value.
         def query(self, val):

@@ -21,12 +21,8 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        if x < 0:
-            x = int(str(x)[::-1][-1] + str(x)[::-1][:-1])
-        else:
-            x = int(str(x)[::-1])
-        x = 0 if abs(x) > 0x7FFFFFFF else x
-        return x
+        x = int(str(x)[::-1][-1] + str(x)[::-1][:-1]) if x < 0 else int(str(x)[::-1])
+        return 0 if abs(x) > 0x7FFFFFFF else x
 
     def reverse3(self, x):
         """

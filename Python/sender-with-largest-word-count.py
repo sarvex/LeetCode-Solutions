@@ -16,4 +16,4 @@ class Solution(object):
         cnt = collections.Counter()
         for m, s in itertools.izip(messages, senders):
             cnt[s] += m.count(' ')+1
-        return max((k for k in cnt.iterkeys()), key=lambda x: (cnt[x], x))
+        return max(cnt.iterkeys(), key=lambda x: (cnt[x], x))

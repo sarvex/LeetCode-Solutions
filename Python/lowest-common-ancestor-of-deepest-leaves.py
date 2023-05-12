@@ -22,8 +22,6 @@ class Solution(object):
             d2, lca2 = lcaDeepestLeavesHelper(root.right)
             if d1 > d2:
                 return d1+1, lca1
-            if d1 < d2:
-                return d2+1, lca2
-            return d1+1, root
+            return (d2+1, lca2) if d1 < d2 else (d1+1, root)
 
         return lcaDeepestLeavesHelper(root)[1]

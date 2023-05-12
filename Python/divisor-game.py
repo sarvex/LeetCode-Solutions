@@ -34,11 +34,10 @@ class Solution2(object):
                 for i in xrange(1, N+1):
                     if i*i > N:
                         break
-                    if N % i == 0:
-                        if not memoization(N-i, dp):
-                            result = True
-                            break
+                    if N % i == 0 and not memoization(N - i, dp):
+                        result = True
+                        break
                 dp[N] = result
             return dp[N]
-        
+
         return memoization(N, {})

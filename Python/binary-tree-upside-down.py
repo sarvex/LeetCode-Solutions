@@ -38,10 +38,7 @@ class Solution2(object):
             return parent
 
         root = self.upsideDownBinaryTreeRecu(p.left, p)
-        if parent:
-            p.left = parent.right
-        else:
-            p.left = None
+        p.left = parent.right if parent else None
         p.right = parent
 
         return root

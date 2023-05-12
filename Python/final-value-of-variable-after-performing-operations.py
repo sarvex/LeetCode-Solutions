@@ -7,4 +7,4 @@ class Solution(object):
         :type operations: List[str]
         :rtype: int
         """
-        return sum(1 if '+' == op[1] else -1 for op in operations)
+        return sum(1 if op[1] == '+' else -1 for op in operations)

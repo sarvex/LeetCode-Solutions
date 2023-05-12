@@ -9,8 +9,7 @@ class Solution(object):
         """
         points = []
         for x, y, h in buildings:
-            points.append((x, 1, h))
-            points.append((y, -1, h))
+            points.extend(((x, 1, h), (y, -1, h)))
         points.sort()
         result = []
         total = cnt = 0

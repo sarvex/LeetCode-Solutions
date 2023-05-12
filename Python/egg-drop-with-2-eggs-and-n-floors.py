@@ -23,8 +23,8 @@ class Solution2(object):
         :rtype: int
         """
         K = 2
-        dp = [[float("inf") for j in xrange(n+1)] for _ in xrange(2)]
-        dp[1] = [j for j in xrange(n+1)]
+        dp = [[float("inf") for _ in xrange(n+1)] for _ in xrange(2)]
+        dp[1] = list(xrange(n+1))
         for i in xrange(2, K+1):
             dp[i%2][0] = 0
             for j in xrange(1, n+1):

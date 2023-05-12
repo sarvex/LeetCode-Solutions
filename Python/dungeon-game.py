@@ -49,11 +49,7 @@ class Solution2(object):
                 remain_HP[j] = max(remain_HP[j - 1] + dungeon[0][j], 0)
 
         for i in xrange(1, len(dungeon)):
-            if remain_HP[0] > 0:
-                remain_HP[0] = max(remain_HP[0] + dungeon[i][0], 0)
-            else:
-                remain_HP[0] = 0
-
+            remain_HP[0] = max(remain_HP[0] + dungeon[i][0], 0) if remain_HP[0] > 0 else 0
             for j in xrange(1, len(remain_HP)):
                 remain = 0
                 if remain_HP[j - 1] > 0:

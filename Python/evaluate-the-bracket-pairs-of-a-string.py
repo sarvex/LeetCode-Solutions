@@ -8,7 +8,7 @@ class Solution(object):
         :type knowledge: List[List[str]]
         :rtype: str
         """
-        lookup = {k: v for k, v in knowledge}
+        lookup = dict(knowledge)
         result, curr = [], []
         has_pair = False
         for c in s:

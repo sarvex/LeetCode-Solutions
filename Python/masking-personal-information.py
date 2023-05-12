@@ -9,11 +9,9 @@ class Solution(object):
         """
         if '@' in S:
             first, after = S.split('@')
-            return "{}*****{}@{}".format(first[0], first[-1], after).lower()
+            return f"{first[0]}*****{first[-1]}@{after}".lower()
 
         digits = filter(lambda x: x.isdigit(), S)
-        local = "***-***-{}".format(digits[-4:])
-        if len(digits) == 10:
-            return local
-        return "+{}-{}".format('*' * (len(digits) - 10), local)
+        local = f"***-***-{digits[-4:]}"
+        return local if len(digits) == 10 else f"+{'*' * (len(digits) - 10)}-{local}"
 

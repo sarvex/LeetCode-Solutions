@@ -14,7 +14,7 @@ class Solution(object):
         def factorize(x):
             result = []
             d = 2
-            while d*d <= x:
+            while d**2 <= x:
                 e = 0
                 while x%d == 0:
                     x //= d
@@ -25,7 +25,7 @@ class Solution(object):
             if x > 1:
                 result.append([x, 1])
             return result
-        
+
         right = collections.Counter()
         for x in reversed(nums):
             for p, c in factorize(x):

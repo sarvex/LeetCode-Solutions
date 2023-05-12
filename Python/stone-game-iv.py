@@ -10,8 +10,8 @@ class Solution(object):
         dp = [False]*(n+1)
         for i in xrange(1, n+1):
             j = 1
-            while j*j <= i:
-                if not dp[i-j*j]:
+            while j**2 <= i:
+                if not dp[i - j**2]:
                     dp[i] = True
                     break
                 j += 1

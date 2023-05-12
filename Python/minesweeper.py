@@ -25,7 +25,7 @@ class Solution(object):
                         r, c = row + i, col + j
                         if not (0 <= r < len(board)) or not (0 <= c < len(board[r])):
                             continue
-                        if board[r][c] == 'M' or board[r][c] == 'X':
+                        if board[r][c] in ['M', 'X']:
                             count += 1
 
                 if count:
@@ -67,7 +67,7 @@ class Solution2(object):
                     r, c = row + i, col + j
                     if not (0 <= r < len(board)) or not (0 <= c < len(board[r])):
                         continue
-                    if board[r][c] == 'M' or board[r][c] == 'X':
+                    if board[r][c] in ['M', 'X']:
                         count += 1
 
             if count:

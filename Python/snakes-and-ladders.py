@@ -21,9 +21,9 @@ class Solution(object):
         q = collections.deque([1])
         while q:
             s = q.popleft()
-            if s == n*n:
+            if s == n**2:
                 return lookup[s]
-            for s2 in xrange(s+1, min(s+6, n*n)+1):
+            for s2 in xrange(s+1, min(s+6, n**2) + 1):
                 r, c = coordinate(n, s2)
                 if board[r][c] != -1:
                     s2 = board[r][c]

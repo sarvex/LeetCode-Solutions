@@ -10,7 +10,7 @@ class Solution(object):
         """
         digits = map(int, str(n))
         result = []
-        if len(digits)%2 == 0:            
+        if len(digits)%2 == 0:        
             left = [0]*2
             for d in digits:
                 left[d%2] += 1
@@ -21,7 +21,7 @@ class Solution(object):
                 right = [len(digits)//2-left[0], len(digits)//2-left[1]]
                 if any(x < 0 for x in right):
                     continue
-                d = digits[i]+1 if right[(digits[i]+1)%2]-1 >= 0 else digits[i]+2
+                d = digits[i]+1 if right[(digits[i]+1)%2] >= 1 else digits[i]+2
                 if d > 9:
                     continue
                 right[d%2] -= 1

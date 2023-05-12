@@ -18,10 +18,11 @@ class Solution(object):
         dp = [n]*(1<<n)
         dp[0] = 0
         for mask in xrange(1<<n):
-            candidates = []
-            for v in xrange(n):
-                if (mask&(1<<v)) == 0 and (mask&reqs[v]) == reqs[v]:
-                    candidates.append(v)
+            candidates = [
+                v
+                for v in xrange(n)
+                if (mask & (1 << v)) == 0 and (mask & reqs[v]) == reqs[v]
+            ]
             for choice in itertools.combinations(candidates, min(len(candidates), k)):
                 new_mask = mask
                 for v in choice:

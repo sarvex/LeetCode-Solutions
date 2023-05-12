@@ -11,7 +11,7 @@ class Solution(object):
         :type start: int
         :rtype: bool
         """
-        q, lookup = collections.deque([start]), set([start])
+        q, lookup = collections.deque([start]), {start}
         while q:
             i = q.popleft()
             if not arr[i]:
@@ -19,5 +19,5 @@ class Solution(object):
             for j in [i-arr[i], i+arr[i]]:
                 if 0 <= j < len(arr) and j not in lookup:
                     lookup.add(j)
-                    q.append(j) 
+                    q.append(j)
         return False

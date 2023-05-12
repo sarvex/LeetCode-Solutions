@@ -28,7 +28,7 @@ class Solution(object):
 
         neighbors, leaves = collections.defaultdict(list), set()
         traverse(root, neighbors, leaves)
-        q, lookup = [k], set([k])
+        q, lookup = [k], {k}
         while q:
             next_q = []
             for u in q:

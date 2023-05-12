@@ -56,7 +56,7 @@ class Solution2(object):
         :type diff: int
         :rtype: int
         """
-        sorted_nums = sorted(set(x-y for x, y in itertools.izip(nums1, nums2)))
+        sorted_nums = sorted({x-y for x, y in itertools.izip(nums1, nums2)})
         num_to_idx = {x:i for i, x in enumerate(sorted_nums)}
         result = 0
         bit = BIT(len(num_to_idx))

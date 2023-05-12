@@ -7,7 +7,7 @@ class Solution(object):
         :type s: str
         :rtype: List[List[str]]
         """
-        is_palindrome = [[False] * len(s) for i in xrange(len(s))]
+        is_palindrome = [[False] * len(s) for _ in xrange(len(s))]
         for i in reversed(xrange(len(s))):
             for j in xrange(i, len(s)):
                 is_palindrome[i][j] = s[i] == s[j] and ((j - i < 2) or is_palindrome[i + 1][j - 1])
@@ -49,8 +49,5 @@ class Solution2(object):
                     cur.pop()
 
     def isPalindrome(self, s):
-        for i in xrange(len(s) / 2):
-            if s[i] != s[-(i + 1)]:
-                return False
-        return True
+        return all(s[i] == s[-(i + 1)] for i in xrange(len(s) / 2))
 

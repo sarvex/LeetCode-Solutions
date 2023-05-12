@@ -9,9 +9,7 @@ class Solution(object):
         """
         n = len(stoneValue)
         prefix = [0]
-        for v in stoneValue:
-            prefix.append(prefix[-1] + v)
-
+        prefix.extend(prefix[-1] + v for v in stoneValue)
         mid = range(n)
 
         dp = [[0]*n for _ in xrange(n)]
@@ -48,9 +46,7 @@ class Solution2(object):
         """
         n = len(stoneValue)
         prefix = [0]
-        for v in stoneValue:
-            prefix.append(prefix[-1] + v)
-
+        prefix.extend(prefix[-1] + v for v in stoneValue)
         mid = [[0]*n for _ in xrange(n)]
         for l in xrange(1, n+1):
             for i in xrange(n-l+1):
@@ -59,7 +55,7 @@ class Solution2(object):
                 while prefix[p]-prefix[i] < prefix[j+1]-prefix[p]:
                     p += 1  # Time: O(n^2) in total
                 mid[i][j] = p
-        
+
         rmq = [[0]*n for _ in xrange(n)]
         for i in xrange(n):
             rmq[i][i] = stoneValue[i]

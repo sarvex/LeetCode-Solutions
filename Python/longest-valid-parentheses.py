@@ -38,9 +38,6 @@ class Solution2(object):
                 last = i
             else:
                 indices.pop()
-                if not indices:
-                    longest = max(longest, i - last)
-                else:
-                    longest = max(longest, i - indices[-1])
+                longest = max(longest, i - indices[-1]) if indices else max(longest, i - last)
         return longest
 

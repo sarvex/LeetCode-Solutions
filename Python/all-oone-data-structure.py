@@ -58,7 +58,9 @@ class AllOne(object):
         :rtype: void
         """
         if key not in self.bucket_of_key:
-            self.bucket_of_key[key] = self.buckets.insert(self.buckets.begin(), Node(0, set([key])))
+            self.bucket_of_key[key] = self.buckets.insert(
+                self.buckets.begin(), Node(0, {key})
+            )
 
         bucket, next_bucket = self.bucket_of_key[key], self.bucket_of_key[key].next
         if next_bucket is self.buckets.end() or next_bucket.value > bucket.value+1:
@@ -96,16 +98,12 @@ class AllOne(object):
         Returns one of the keys with maximal value.
         :rtype: str
         """
-        if self.buckets.empty():
-            return ""
-        return iter(self.buckets.back().keys).next()
+        return "" if self.buckets.empty() else iter(self.buckets.back().keys).next()
 
     def getMinKey(self):
         """
         Returns one of the keys with Minimal value.
         :rtype: str
         """
-        if self.buckets.empty():
-            return ""
-        return iter(self.buckets.front().keys).next()
+        return "" if self.buckets.empty() else iter(self.buckets.front().keys).next()
 

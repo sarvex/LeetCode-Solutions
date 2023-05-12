@@ -18,7 +18,7 @@ class TreeAncestor(object):
         while q:
             new_q = []
             for p in q:
-                if not (i < len(par[p[i]])):
+                if i >= len(par[p[i]]):
                     continue
                 p.append(par[p[i]][i])
                 new_q.append(p)
@@ -35,7 +35,7 @@ class TreeAncestor(object):
         par, i, pow_i_of_2 = self.__parent, 0, 1
         while pow_i_of_2 <= k:
             if k & pow_i_of_2:
-                if not (i < len(par[node])):
+                if i >= len(par[node]):
                     return -1
                 node = par[node][i]
             i += 1

@@ -12,19 +12,14 @@ class Solution(object):
         for s in strings:  # Grouping.
             groups[self.hashStr(s)].append(s)
 
-        result = []
-        for key, val in groups.iteritems():
-            result.append(sorted(val))
-
-        return result
+        return [sorted(val) for key, val in groups.iteritems()]
 
     def hashStr(self, s):
         base = ord(s[0])
-        hashcode = ""
-        for i in xrange(len(s)):
-            if ord(s[i]) - base >= 0:
-                hashcode += unichr(ord('a') + ord(s[i]) - base)
-            else:
-                hashcode += unichr(ord('a') + ord(s[i]) - base + 26)
-        return hashcode
+        return "".join(
+            unichr(ord('a') + ord(s[i]) - base)
+            if ord(s[i]) - base >= 0
+            else unichr(ord('a') + ord(s[i]) - base + 26)
+            for i in xrange(len(s))
+        )
 

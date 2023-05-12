@@ -31,9 +31,8 @@ class Solution(object):
         for i, c in enumerate(s):
             idxs[ord(c)-ord('a')].append(i)
         targets, pairs = [0]*len(s), []
-        for c, idx in enumerate(idxs):
-            for i in xrange(len(idx)//2):
-                pairs.append((idx[i], idx[~i]))
+        for idx in idxs:
+            pairs.extend((idx[i], idx[~i]) for i in xrange(len(idx)//2))
             if len(idx)%2:
                 targets[idx[len(idx)//2]] = len(s)//2
         pairs.sort()

@@ -93,10 +93,7 @@ class SegmentTree(object):
         return result
     
     def data(self):
-        showList = []
-        for i in xrange(self.N):
-            showList.append(self.query(i, i))
-        return showList
+        return [self.query(i, i) for i in xrange(self.N)]
 
 
 class SegmentTree2(object):
@@ -268,7 +265,8 @@ class Solution4(object):
                     heights[j] = max(heights[j], heights[i])
 
         result = []
-        for height in heights:
-            result.append(max(result[-1], height) if result else height)
+        result.extend(
+            max(result[-1], height) if result else height for height in heights
+        )
         return result
 

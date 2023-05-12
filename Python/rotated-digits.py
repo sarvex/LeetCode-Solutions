@@ -8,7 +8,7 @@ class Solution(object):
         :rtype: int
         """
         A = map(int, str(N))
-        invalid, diff = set([3, 4, 7]), set([2, 5, 6, 9])
+        invalid, diff = {3, 4, 7}, {2, 5, 6, 9}
         def dp(A, i, is_prefix_equal, is_good, lookup):
             if i == len(A): return int(is_good)
             if (i, is_prefix_equal, is_good) not in lookup:
@@ -57,7 +57,7 @@ class Solution3(object):
         :type N: int
         :rtype: int
         """
-        invalid, diff = set(['3', '4', '7']), set(['2', '5', '6', '9'])
+        invalid, diff = {'3', '4', '7'}, {'2', '5', '6', '9'}
         result = 0
         for i in xrange(N+1):
             lookup = set(list(str(i)))

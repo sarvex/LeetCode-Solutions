@@ -68,8 +68,6 @@ class Solution2(object):
             for u, mask, total in dp:
                 if bin(mask).count('1') == k+1:
                     result = max(result, total)
-                for v, t in adj[u]:
-                    if mask&(1<<v) == 0:
-                        new_dp.append((v, mask|(1<<v), total+t))
+                new_dp.extend((v, mask|(1<<v), total+t) for v, t in adj[u] if mask&(1<<v) == 0)
             dp = new_dp
         return result

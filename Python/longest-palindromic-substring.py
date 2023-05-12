@@ -21,11 +21,7 @@ class Solution(object):
         center, right = 0, 0
         for i in xrange(1, len(T) - 1):
             i_mirror = 2 * center - i
-            if right > i:
-                P[i] = min(right - i, P[i_mirror])
-            else:
-                P[i] = 0
-
+            P[i] = min(right - i, P[i_mirror]) if right > i else 0
             while T[i + 1 + P[i]] == T[i - 1 - P[i]]:
                 P[i] += 1
 

@@ -8,10 +8,7 @@ class Solution(object):
         :rtype: int
         """
         s = sum(A)
-        fi = 0
-        for i in xrange(len(A)):
-            fi += i * A[i]
-
+        fi = sum(i * A[i] for i in xrange(len(A)))
         result = fi
         for i in xrange(1, len(A)+1):
             fi += s - len(A) * A[-i]

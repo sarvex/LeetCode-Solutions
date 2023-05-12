@@ -26,12 +26,10 @@ class Solution(object):
             bottomLeftNode = dfs(grid, x+half, y, half)
             bottomRightNode = dfs(grid, x+half, y+half, half)
             if topLeftNode.isLeaf and topRightNode.isLeaf and \
-               bottomLeftNode.isLeaf and bottomRightNode.isLeaf and \
-               topLeftNode.val == topRightNode.val == bottomLeftNode.val == bottomRightNode.val:
+                   bottomLeftNode.isLeaf and bottomRightNode.isLeaf and \
+                   topLeftNode.val == topRightNode.val == bottomLeftNode.val == bottomRightNode.val:
                 return Node(topLeftNode.val, True, None, None, None, None)
             return Node(True, False, topLeftNode, topRightNode, bottomLeftNode, bottomRightNode)
-        
-        if not grid:
-            return None
-        return dfs(grid, 0, 0, len(grid))
+
+        return None if not grid else dfs(grid, 0, 0, len(grid))
 

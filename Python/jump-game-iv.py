@@ -14,7 +14,7 @@ class Solution(object):
         for i, x in enumerate(arr):
             groups[x].append(i)
         q = collections.deque([(0, 0)])
-        lookup = set([0])
+        lookup = {0}
         while q:
             pos, step = q.popleft()
             if pos == len(arr)-1:
@@ -25,5 +25,5 @@ class Solution(object):
                 if p in lookup or not 0 <= p < len(arr):
                     continue
                 lookup.add(p)
-                q.append((p, step+1)) 
+                q.append((p, step+1))
         return step

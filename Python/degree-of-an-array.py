@@ -16,7 +16,5 @@ class Solution(object):
             left.setdefault(num, i)
             right[num] = i
         degree = max(counts.values())
-        return min(right[num]-left[num]+1 \
-                   for num in counts.keys() \
-                   if counts[num] == degree)
+        return min(right[num]-left[num]+1 for num in counts if counts[num] == degree)
 

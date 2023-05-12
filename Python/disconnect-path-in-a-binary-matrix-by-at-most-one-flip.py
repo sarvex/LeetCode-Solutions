@@ -12,7 +12,9 @@ class Solution(object):
             for j in xrange(len(grid[0])):
                 if (i, j) == (0, 0) or grid[i][j] == 0:
                     continue
-                if (i-1 < 0 or grid[i-1][j] == 0) and (j-1 < 0 or grid[i][j-1] == 0):
+                if (i < 1 or grid[i - 1][j] == 0) and (
+                    j < 1 or grid[i][j - 1] == 0
+                ):
                     grid[i][j] = 0
         for i in reversed(xrange(len(grid))):
             for j in reversed(xrange(len(grid[0]))):

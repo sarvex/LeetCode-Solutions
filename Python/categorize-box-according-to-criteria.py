@@ -13,13 +13,9 @@ class Solution(object):
         """
         bulky = any(x >= 10**4 for x in (length, width, height)) or length*width*height >= 10**9
         heavy = mass >= 100
-        if bulky and heavy:
-            return "Both"
         if bulky:
-            return "Bulky"
-        if heavy:
-            return "Heavy"
-        return "Neither"
+            return "Both" if heavy else "Bulky"
+        return "Heavy" if heavy else "Neither"
 
 
 # Time:  O(1)

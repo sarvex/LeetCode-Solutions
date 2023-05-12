@@ -10,7 +10,7 @@ class Solution(object):
         """
         if all(x == s[0] for x in s):
             return len(s)
-        dp2 = [[0]*(len(s)+1) for i in xrange(2)]  # dp2[i%2][j]: max prefix length of s[i:] and s[j:]
+        dp2 = [[0]*(len(s)+1) for _ in xrange(2)]
         dp = [1]*len(s)  # dp[i]: max operation count of s[i:]
         for i in reversed(xrange(len(s)-1)):
             for j in xrange(i+1, len(s)):

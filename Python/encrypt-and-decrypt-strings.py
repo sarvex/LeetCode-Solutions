@@ -16,7 +16,7 @@ class Encrypter(object):
         :type values: List[str]
         :type dictionary: List[str]
         """
-        self.__lookup = {k: v for k, v in itertools.izip(keys, values)}
+        self.__lookup = dict(itertools.izip(keys, values))
         self.__cnt = collections.Counter(self.encrypt(x) for x in dictionary)
         
     def encrypt(self, word1):

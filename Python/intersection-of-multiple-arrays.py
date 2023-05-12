@@ -27,7 +27,7 @@ class Solution2(object):
         """
         result = set(nums[0])
         for i in xrange(1, len(nums)):
-            result = set(x for x in nums[i] if x in result)
+            result = {x for x in nums[i] if x in result}
         return [i for i in xrange(min(result), max(result)+1) if i in result] if result else []
 
 
@@ -42,5 +42,5 @@ class Solution3(object):
         """
         result = set(nums[0])
         for i in xrange(1, len(nums)):
-            result = set(x for x in nums[i] if x in result)
+            result = {x for x in nums[i] if x in result}
         return sorted(result)

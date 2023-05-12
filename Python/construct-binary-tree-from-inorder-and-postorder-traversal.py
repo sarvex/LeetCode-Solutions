@@ -12,9 +12,7 @@ class Solution(object):
     # @param postorder, a list of integers
     # @return a tree node
     def buildTree(self, inorder, postorder):
-        lookup = {}
-        for i, num in enumerate(inorder):
-            lookup[num] = i
+        lookup = {num: i for i, num in enumerate(inorder)}
         return self.buildTreeRecu(lookup, postorder, inorder, len(postorder), 0, len(inorder))
 
     def buildTreeRecu(self, lookup, postorder, inorder, post_end, in_start, in_end):

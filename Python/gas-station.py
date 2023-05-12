@@ -14,8 +14,5 @@ class Solution(object):
             if current_sum < 0:
                 start = i + 1
                 current_sum = 0
-        if total_sum >= 0:
-            return start
-
-        return -1
+        return start if total_sum >= 0 else -1
 

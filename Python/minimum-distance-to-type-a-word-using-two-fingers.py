@@ -26,9 +26,7 @@ class Solution2(object):
         :rtype: int
         """
         def distance(a, b):
-            if -1 in [a, b]:
-                return 0
-            return abs(a//6 - b//6) + abs(a%6 - b%6)
+            return 0 if -1 in [a, b] else abs(a//6 - b//6) + abs(a%6 - b%6)
 
         dp = {(-1, -1): 0}
         for c in word:

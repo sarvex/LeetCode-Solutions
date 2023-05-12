@@ -9,7 +9,7 @@ class Solution(object):
             return 0
 
         m, n = len(matrix), len(matrix[0])
-        size = [[0 for j in xrange(n)] for i in xrange(2)]
+        size = [[0 for _ in xrange(n)] for _ in xrange(2)]
         max_size = 0
 
         for j in xrange(n):
@@ -18,15 +18,12 @@ class Solution(object):
             max_size = max(max_size, size[0][j])
 
         for i in xrange(1, m):
-            if matrix[i][0] == '1':
-                size[i % 2][0] = 1
-            else:
-                size[i % 2][0] = 0
+            size[i % 2][0] = 1 if matrix[i][0] == '1' else 0
             for j in xrange(1, n):
                 if matrix[i][j] == '1':
                     size[i % 2][j] = min(size[i % 2][j - 1], \
-                                         size[(i - 1) % 2][j], \
-                                         size[(i - 1) % 2][j - 1]) + 1
+                                             size[(i - 1) % 2][j], \
+                                             size[(i - 1) % 2][j - 1]) + 1
                     max_size = max(max_size, size[i % 2][j])
                 else:
                     size[i % 2][j] = 0
@@ -45,7 +42,7 @@ class Solution2(object):
             return 0
 
         m, n = len(matrix), len(matrix[0])
-        size = [[0 for j in xrange(n)] for i in xrange(m)]
+        size = [[0 for _ in xrange(n)] for _ in xrange(m)]
         max_size = 0
 
         for j in xrange(n):
@@ -54,15 +51,12 @@ class Solution2(object):
             max_size = max(max_size, size[0][j])
 
         for i in xrange(1, m):
-            if matrix[i][0] == '1':
-                size[i][0] = 1
-            else:
-                size[i][0] = 0
+            size[i][0] = 1 if matrix[i][0] == '1' else 0
             for j in xrange(1, n):
                 if matrix[i][j] == '1':
                     size[i][j] = min(size[i][j - 1],  \
-                                     size[i - 1][j],  \
-                                     size[i - 1][j - 1]) + 1
+                                         size[i - 1][j],  \
+                                         size[i - 1][j - 1]) + 1
                     max_size = max(max_size, size[i][j])
                 else:
                     size[i][j] = 0
@@ -82,8 +76,7 @@ class Solution3(object):
 
         H, W = 0, 1
         # DP table stores (h, w) for each (i, j).
-        table = [[[0, 0] for j in xrange(len(matrix[0]))] \
-                         for i in xrange(len(matrix))]
+        table = [[[0, 0] for _ in xrange(len(matrix[0]))] for _ in xrange(len(matrix))]
         for i in reversed(xrange(len(matrix))):
             for j in reversed(xrange(len(matrix[i]))):
                 # Find the largest h such that (i, j) to (i + h - 1, j) are feasible.
@@ -98,7 +91,7 @@ class Solution3(object):
 
         # A table stores the length of largest square for each (i, j).
         s = [[0 for j in xrange(len(matrix[0]))] \
-                for i in xrange(len(matrix))]
+                    for i in xrange(len(matrix))]
         max_square_area = 0
         for i in reversed(xrange(len(matrix))):
             for j in reversed(xrange(len(matrix[i]))):

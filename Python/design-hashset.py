@@ -67,8 +67,7 @@ class MyHashSet(object):
         :rtype: void
         """
         l = self.__data[key % len(self.__data)]
-        node = l.find(key)
-        if node:
+        if node := l.find(key):
             l.delete(node)
 
     def contains(self, key):

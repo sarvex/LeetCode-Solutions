@@ -16,10 +16,7 @@ class Solution(object):
         dp = [[0] * (len(B)+1) for _ in xrange(2)]
         for i in xrange(len(A)):
             for j in xrange(len(B)):
-                if A[i] == B[j]:
-                    dp[(i+1)%2][j+1] = dp[i%2][j]+1
-                else:
-                    dp[(i+1)%2][j+1] = 0
+                dp[(i+1)%2][j+1] = dp[i%2][j]+1 if A[i] == B[j] else 0
             result = max(result, max(dp[(i+1)%2]))
         return result
 
@@ -83,10 +80,9 @@ class Solution3(object):
         if len(A) > len(B): return self.findLength(B, A)
 
         def check(length):
-            lookup = set(A[i:i+length] \
-                       for i in xrange(len(A)-length+1))
+            lookup = {A[i:i+length] for i in xrange(len(A)-length+1)}
             return any(B[j:j+length] in lookup \
-                       for j in xrange(len(B)-length+1))
+                           for j in xrange(len(B)-length+1))
 
         A = ''.join(map(chr, A))
         B = ''.join(map(chr, B))

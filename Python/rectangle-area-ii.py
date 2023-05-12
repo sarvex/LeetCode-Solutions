@@ -43,8 +43,7 @@ class Solution(object):
         events = []
         X = set()
         for x1, y1, x2, y2 in rectangles:
-            events.append((y1, OPEN, x1, x2))
-            events.append((y2, CLOSE, x1, x2))
+            events.extend(((y1, OPEN, x1, x2), (y2, CLOSE, x1, x2)))
             X.add(x1)
             X.add(x2)
         events.sort()

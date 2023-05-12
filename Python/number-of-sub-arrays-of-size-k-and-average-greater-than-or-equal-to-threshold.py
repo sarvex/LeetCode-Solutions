@@ -30,10 +30,5 @@ class Solution2(object):
         :rtype: int
         """
         accu = [0]
-        for x in arr:
-            accu.append(accu[-1]+x)
-        result = 0
-        for i in xrange(len(accu)-k):
-            if accu[i+k]-accu[i] >= threshold*k:
-                result += 1
-        return result
+        accu.extend(accu[-1]+x for x in arr)
+        return sum(1 for i in xrange(len(accu)-k) if accu[i+k]-accu[i] >= threshold*k)

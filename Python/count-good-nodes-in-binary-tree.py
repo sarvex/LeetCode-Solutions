@@ -23,8 +23,7 @@ class Solution(object):
                 continue
             curr_max = max(curr_max, node.val)
             result += int(curr_max <= node.val)
-            stk.append((node.right, curr_max))
-            stk.append((node.left, curr_max))
+            stk.extend(((node.right, curr_max), (node.left, curr_max)))
         return result
 
 

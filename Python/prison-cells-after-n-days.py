@@ -9,7 +9,7 @@ class Solution(object):
         :rtype: List[int]
         """
         N -= max(N-1, 0) // 14 * 14  # 14 is got from Solution2
-        for i in xrange(N):
+        for _ in xrange(N):
             cells = [0] + [cells[i-1] ^ cells[i+1] ^ 1 for i in xrange(1, 7)] + [0]
         return cells
 

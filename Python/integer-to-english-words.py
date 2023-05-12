@@ -28,9 +28,7 @@ class Solution(object):
         return " ".join(res[::-1])
 
     def threeDigits(self, num, lookup, unit):
-        res = []
-        if num / 100:
-            res = [lookup[num / 100] + " " + "Hundred"]
+        res = [f"{lookup[num / 100]} Hundred"] if num / 100 else []
         if num % 100:
             res.append(self.twoDigits(num % 100, lookup))
         if unit != "":
@@ -40,5 +38,5 @@ class Solution(object):
     def twoDigits(self, num, lookup):
         if num in lookup:
             return lookup[num]
-        return lookup[(num / 10) * 10] + " " + lookup[num % 10]
+        return f"{lookup[num / 10 * 10]} {lookup[num % 10]}"
 

@@ -40,7 +40,7 @@ class Solution2(object):
             graph[u].append(v)
         result = []
         for i, j in queries:
-            stk, lookup = [i], set([i])
+            stk, lookup = [i], {i}
             while stk:
                 node = stk.pop()
                 for nei in graph[node]:

@@ -78,7 +78,7 @@ class Solution3(object):
         prefix = [0]*(len(cost)+1)
         left = 0
         for i in xrange(len(cost)):
-            if i-1 >= 0:
+            if i >= 1:
                 left += prefix[i]*(nums[idxs[i]]-nums[idxs[i-1]])
             prefix[i+1] = prefix[i]+cost[idxs[i]]
         result = float("inf")
@@ -87,7 +87,7 @@ class Solution3(object):
             if i+1 < len(idxs):
                 right += suffix*(nums[idxs[i+1]]-nums[idxs[i]])
             result = min(result, left+right)
-            if i-1 >= 0:
+            if i >= 1:
                 left -= prefix[i]*(nums[idxs[i]]-nums[idxs[i-1]])
             suffix += cost[idxs[i]]
         return result

@@ -37,10 +37,7 @@ class Solution2(object):
         def postOrderTraversal(node, lookup, result):
             if not node:
                 return ""
-            s = "(" + postOrderTraversal(node.left, lookup, result) + \
-                str(node.val) + \
-                postOrderTraversal(node.right, lookup, result) + \
-                ")"
+            s = f"({postOrderTraversal(node.left, lookup, result)}{str(node.val)}{postOrderTraversal(node.right, lookup, result)})"
             if lookup[s] == 1:
                 result.append(node)
             lookup[s] += 1

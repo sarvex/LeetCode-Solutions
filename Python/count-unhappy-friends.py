@@ -16,6 +16,12 @@ class Solution(object):
         pairing = [0]*n
         for i, j in pairs:
             pairing[i], pairing[j] = j, i
-        return sum(any(friends[i][j] < friends[i][pairing[i]] and friends[j][i] < friends[j][pairing[j]]
-                       for j in xrange(len(friends[i])) if j != i and j != pairing[i])
-                   for i in xrange(len(friends)))
+        return sum(
+            any(
+                friends[i][j] < friends[i][pairing[i]]
+                and friends[j][i] < friends[j][pairing[j]]
+                for j in xrange(len(friends[i]))
+                if j not in [i, pairing[i]]
+            )
+            for i in xrange(len(friends))
+        )

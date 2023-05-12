@@ -15,7 +15,7 @@ class Solution(object):
             if i != len(nums1) and (j == len(nums2) or nums1[i] < nums2[j]):
                 sum1 += nums1[i]
                 i += 1
-            elif j != len(nums2) and (i == len(nums1) or nums1[i] > nums2[j]):
+            elif i == len(nums1) or nums1[i] > nums2[j]:
                 sum2 += nums2[j]
                 j += 1
             else:

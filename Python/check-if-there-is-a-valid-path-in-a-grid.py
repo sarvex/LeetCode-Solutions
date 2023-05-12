@@ -15,15 +15,18 @@ class Solution(object):
         ]
 
         for r, c in directions[grid[0][0]-1]:
-            if not (0 <= r < len(grid) and 0 <= c < len(grid[0])):
+            if not 0 <= r < len(grid) or not 0 <= c < len(grid[0]):
                 continue
             pr, pc = 0, 0
             while r != len(grid)-1 or c != len(grid[0])-1:
                 for dx, dy in directions[grid[r][c]-1]:
                     nr, nc = r+dx, c+dy
-                    if (nr == pr and nc == pc) or \
-                       not(0 <= nr < len(grid) and 0 <= nc < len(grid[0])) or \
-                       (-dx, -dy) not in directions[grid[nr][nc]-1]:
+                    if (
+                        (nr == pr and nc == pc)
+                        or not 0 <= nr < len(grid)
+                        or not 0 <= nc < len(grid[0])
+                        or (-dx, -dy) not in directions[grid[nr][nc] - 1]
+                    ):
                         continue
                     pr, pc, r, c = r, c, nr, nc
                     break

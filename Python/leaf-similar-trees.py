@@ -24,10 +24,9 @@ class Solution(object):
                 return
             if not node.left and not node.right:
                 yield node.val
-            for i in dfs(node.left):
-                yield i
-            for i in dfs(node.right):
-                yield i
+            yield from dfs(node.left)
+            yield from dfs(node.right)
+
         return all(a == b for a, b in
                    itertools.izip_longest(dfs(root1), dfs(root2)))
 

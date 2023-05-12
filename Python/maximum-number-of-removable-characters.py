@@ -11,7 +11,7 @@ class Solution(object):
         :rtype: int
         """
         def check(s, p, removable, x):
-            lookup = set(removable[i] for i in xrange(x))
+            lookup = {removable[i] for i in xrange(x)}
             j = 0
             for i in xrange(len(s)):
                 if i in lookup or s[i] != p[j]:

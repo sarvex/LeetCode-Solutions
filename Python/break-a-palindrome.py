@@ -7,7 +7,11 @@ class Solution(object):
         :type palindrome: str
         :rtype: str
         """
-        for i in xrange(len(palindrome)//2):
-            if palindrome[i] != 'a':
-                return palindrome[:i] + 'a' + palindrome[i+1:]
-        return palindrome[:-1] + 'b' if len(palindrome) >= 2 else ""
+        return next(
+            (
+                f'{palindrome[:i]}a{palindrome[i + 1:]}'
+                for i in xrange(len(palindrome) // 2)
+                if palindrome[i] != 'a'
+            ),
+            f'{palindrome[:-1]}b' if len(palindrome) >= 2 else "",
+        )

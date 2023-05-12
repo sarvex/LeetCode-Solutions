@@ -14,9 +14,7 @@ class Solution(object):
             return
 
         if node.left is node.right is None:
-            ans = ""
-            for n in path:
-                ans += str(n.val) + "->"
+            ans = "".join(f"{str(n.val)}->" for n in path)
             result.append(ans + str(node.val))
 
         if node.left:

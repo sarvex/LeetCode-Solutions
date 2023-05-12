@@ -15,7 +15,7 @@ class Solution(object):
         if digit1 < digit2:
             digit1, digit2 = digit2, digit1
         total = 2
-        for l in xrange(1, MAX_NUM_OF_DIGITS+1):
+        for _ in xrange(1, MAX_NUM_OF_DIGITS+1):
             for mask in xrange(total):
                 curr, bit = 0, total>>1
                 while bit:

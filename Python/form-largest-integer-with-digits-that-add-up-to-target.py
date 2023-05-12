@@ -11,10 +11,9 @@ class Solution(object):
         dp = [0]
         for t in xrange(1, target+1):
             dp.append(-1)
-            for i, c in enumerate(cost):
-                if t-c < 0 or dp[t-c] < 0:
-                    continue
-                dp[t] = max(dp[t], dp[t-c]+1)
+            for c in cost:
+                if t - c >= 0 and dp[t - c] >= 0:
+                    dp[t] = max(dp[t], dp[t-c]+1)
         if dp[target] < 0:
             return "0"
         result = []

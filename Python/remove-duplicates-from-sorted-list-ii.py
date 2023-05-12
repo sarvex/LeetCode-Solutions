@@ -7,10 +7,7 @@ class ListNode(object):
         self.next = None
 
     def __repr__(self):
-        if self is None:
-            return "Nil"
-        else:
-            return "{} -> {}".format(self.val, repr(self.next))
+        return "Nil" if self is None else f"{self.val} -> {repr(self.next)}"
 
 class Solution(object):
     def deleteDuplicates(self, head):

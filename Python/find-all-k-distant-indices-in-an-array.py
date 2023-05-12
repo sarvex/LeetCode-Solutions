@@ -15,7 +15,6 @@ class Solution(object):
         for i, x in enumerate(nums):
             if x != key:
                 continue
-            for j in xrange(max(i-k, prev+1), min(i+k+1, len(nums))):
-                result.append(j)
+            result.extend(iter(xrange(max(i-k, prev+1), min(i+k+1, len(nums)))))
             prev = min(i+k, len(nums)-1)
         return result

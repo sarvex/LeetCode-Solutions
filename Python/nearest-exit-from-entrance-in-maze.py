@@ -12,7 +12,7 @@ class Solution(object):
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         visited = ' '
         entrance = tuple(entrance)
-        left = set([entrance])
+        left = {entrance}
         right = set([(r, 0) for r in xrange(len(maze)-1) if maze[r][0] == '.' and (r, 0) != entrance] +
                     [(len(maze)-1, c) for c in xrange(len(maze[0])-1) if maze[len(maze)-1][c] == '.' and (len(maze)-1, c) != entrance] +
                     [(r, len(maze[0])-1) for r in reversed(xrange(1, len(maze))) if maze[r][len(maze[0])-1] == '.' and (r, len(maze[0])-1) != entrance] +

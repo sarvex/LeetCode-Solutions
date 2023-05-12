@@ -24,8 +24,7 @@ class Solution:
                 curr = curr.next
                 poly2 = poly2.next
             else:
-                coef = poly1.coefficient+poly2.coefficient
-                if coef:
+                if coef := poly1.coefficient + poly2.coefficient:
                     curr.next = PolyNode(coef, poly1.power)
                     curr = curr.next
                 poly1, poly2 = poly1.next, poly2.next

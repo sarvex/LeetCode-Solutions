@@ -9,7 +9,7 @@ class Solution(object):
         :rtype: List[int]
         """
         result = [0]*N
-        G = [[] for i in xrange(N)]
+        G = [[] for _ in xrange(N)]
         for x, y in paths:
             G[x-1].append(y-1)
             G[y-1].append(x-1)

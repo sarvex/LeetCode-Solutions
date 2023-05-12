@@ -49,7 +49,7 @@ class Solution(object):
         for i in xrange(n):
             if group[i] == -1:
                 group[i] = m
-                m += 1    
+                m += 1
         global_group = Topo()
         for i in xrange(m):
             global_group.add_node(i)
@@ -70,6 +70,5 @@ class Solution(object):
             local_order = local_groups[i].sort();
             if local_order is None:
                 return []
-            for x in local_order:
-                result.append(x)
+            result.extend(iter(local_order))
         return result

@@ -8,10 +8,7 @@ class Solution(object):
         :type list2: List[str]
         :rtype: List[str]
         """
-        lookup = {}
-        for i, s in enumerate(list1):
-            lookup[s] = i
-
+        lookup = {s: i for i, s in enumerate(list1)}
         result = []
         min_sum = float("inf")
         for j, s in enumerate(list2):

@@ -33,9 +33,8 @@ class Solution(object):
         for eqn in equations:
             x = ord(eqn[0]) - ord('a')
             y = ord(eqn[3]) - ord('a')
-            if eqn[1] == '!':
-                if union_find.find_set(x) == union_find.find_set(y):
-                    return False
+            if eqn[1] == '!' and union_find.find_set(x) == union_find.find_set(y):
+                return False
         return True
 
 

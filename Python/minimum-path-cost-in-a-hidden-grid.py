@@ -39,7 +39,7 @@ class Solution(object):
                 if nei not in lookup:
                     dfs(nei, target, master, lookup, adj)
                 adj[nei][pos] = master.move(rollback[d])
-                        
+
         def dijkstra(adj, start, target):
             dist = {start:0}
             min_heap = [(0, start)]
@@ -53,11 +53,9 @@ class Solution(object):
                     dist[v] = curr+w
                     heapq.heappush(min_heap, (curr+w, v))
             return dist[target] if target in dist else -1 
-        
+
         start = (0, 0)
         target = [None]
         adj = collections.defaultdict(dict)
         dfs(start, target, master, set(), adj)
-        if not target[0]:
-            return -1
-        return dijkstra(adj, start, target[0])
+        return -1 if not target[0] else dijkstra(adj, start, target[0])

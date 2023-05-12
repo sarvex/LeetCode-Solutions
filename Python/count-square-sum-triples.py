@@ -7,9 +7,7 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        lookup = set()
-        for i in xrange(1, n+1):
-            lookup.add(i**2)
+        lookup = {i**2 for i in xrange(1, n+1)}
         result = 0
         for i in xrange(1, n+1):
             for j in xrange(1, n+1):
